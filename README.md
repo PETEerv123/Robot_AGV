@@ -1,10 +1,12 @@
-Robot AGV
-- Code 
-    |- Unit test 
-        |- Unit_test_speed
-        |- Unit_test_quad
-- Hardware 
-    |- Mechincal\Assemly
-    |- System Diagram
-- tools
-    |- System Code
+Robot_AGV/
+├── Code/
+│   └── Unit_Test/
+│       ├── Unit_Test_Speed/
+│       └── Unit_Test_Quadrature_Encoder/
+│
+├── Hardware/
+│   ├── Mechanical_Assembly/
+│   └── System_Diagram.png
+│
+└── Tools/
+    └── System_Code/
