@@ -13,7 +13,7 @@
 #define PIN_ENCODER_BR_A       19
 #define PIN_ENCODER_BR_B       27
 
-#define ENCODER_PPR      7.0f
+#define ENCODER_PPR      13.0f
 #define GEAR_RATIO       19.2f
 #define QUAD_FACTOR      4.0f
 #define TICKS_PER_REV    (ENCODER_PPR * GEAR_RATIO * QUAD_FACTOR)

@@ -4,15 +4,14 @@
 Encoder_Global(Encoder_Handle) *encoders[MAX_ENCODERS] = {0};
 
 Encoder_PRIVATE(void) updateEncoder(Encoder_Handle* pHandle){
-    uint8_t a = digitalRead(e->pinA);
-    uint8_t b = digitalRead(e->pinB);
+    uint8_t a = (uint8_t)digitalRead(pHandle->pinA);
+    uint8_t b = (uint8_t)digitalRead(pHandle->pinB);
 
-    uint8_t current = (a << 1) | b;
+    uint8_t current = (uint8_t)((a << 1) | b);
     
     if (current == pHandle->state) return; 
 
-    uint8_t combined = (pHandle->state << 2) | current;
-
+    uint8_t combined = (uint8_t)(pHandle->state << 2) | current;
     pHandle->state = current;
     switch (combined)
     {
@@ -22,12 +21,24 @@ Encoder_PRIVATE(void) updateEncoder(Encoder_Handle* pHandle){
         case 0b1000:
             pHandle->position++;
             break;
+    
         case 0b0010:
         case 0b1011:
         case 0b1101:
         case 0b0100:
             pHandle->position--;
             break;
+    
+        case 0b0011:
+        case 0b1100:
+            pHandle->position += 2;
+            break;
+    
+        case 0b0110:
+        case 0b1001:
+            pHandle->position -= 2;
+            break;
+    
         default:
             break;
     }
