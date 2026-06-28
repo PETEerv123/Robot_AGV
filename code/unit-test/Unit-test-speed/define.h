@@ -1,6 +1,10 @@
 #ifndef __define_H
 #define __define_H
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 /*Define Encoder Pins*/
 /*Fornt Encoder Pins*/
 #define PIN_ENCODER_FL_A       2
@@ -23,5 +27,7 @@
 #define R  0.075    // meters
 #define WHEEL_CIRC  2.0 * M_PI * R
 
-
+#ifdef __cplusplus
+}
+#endif
 #endif
