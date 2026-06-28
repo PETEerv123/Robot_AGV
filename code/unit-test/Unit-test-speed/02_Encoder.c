@@ -4,22 +4,12 @@
 Encoder_Global(Encoder_Handle) *encoders[MAX_ENCODERS] = {0};
 
 Encoder_PRIVATE(void) updateEncoder(Encoder_Handle* pHandle){
-    
-    pHandle->state = (pHandle->state << 2) | (digitalRead(pHandle->pinA) << 1) | digitalRead(pHandle->pinB);
-    switch (pHandle->state & 0x0F)
-    {
-        case 0b0001:
-        case 0b0111:
-        case 0b1110:
-        case 0b1000:
-            pHandle->position++;
-            break;
-        case 0b0010:
-        case 0b1011:
-        case 0b1101:
-        case 0b0100:
-            pHandle->position--;
-            break;
+  
+    uint8_t b = digitalRead(pHandle->pinB);
+    if (b == HIGH) {
+        pHandle->position++;
+    } else {
+        pHandle->position--;
     }
 }
 void isr_enc0() { if (encoders[0]) updateEncoder(encoders[0]); }
@@ -39,13 +29,16 @@ Encoder_PUBLIC(void) Encoder_Init(Encoder_Handle *pHandle){
 
     pinMode(pHandle->pinA, INPUT_PULLUP);
     pinMode(pHandle->pinB, INPUT_PULLUP);
+
+    pHandle->position = 0;
+    pHandle->state = 0;
     
-    noInterrupts();
     encoders[pHandle->id] = pHandle;
-    interrupts();
+    
     attachInterrupt(digitalPinToInterrupt(pHandle->pinA), isr_table[pHandle->id], FALLING);
+    
 }
-Encoder_PUBLIC(uint32_t) Encoder_GetPosition(Encoder_Handle *pHandle) {
+Encoder_PUBLIC(int32_t) Encoder_GetPosition(Encoder_Handle *pHandle) {
     if (pHandle == NULL) return 0;
 
     noInterrupts();

@@ -22,7 +22,7 @@ void main_loop(void) {
   // unsigned long now = millis();
   // float dt = (now - lastTime) / 1000.0;
   // lastTime = now;
-  // long ticks = Encoder_FL.read();
+  // long ticks = Encoder_FL.read();6311
   // long delta = ticks - prevTicks;
   // prevTicks = ticks;
 
