@@ -39,14 +39,17 @@ Encoder_PUBLIC(void) Encoder_Init(Encoder_Handle *pHandle){
 
     pinMode(pHandle->pinA, INPUT_PULLUP);
     pinMode(pHandle->pinB, INPUT_PULLUP);
+    
+    noInterrupts();
     encoders[pHandle->id] = pHandle;
+    interrupts();
     attachInterrupt(digitalPinToInterrupt(pHandle->pinA), isr_table[pHandle->id], FALLING);
 }
 Encoder_PUBLIC(uint32_t) Encoder_GetPosition(Encoder_Handle *pHandle) {
     if (pHandle == NULL) return 0;
 
     noInterrupts();
-    uint32_t pos= pHandle->position;
+    int32_t pos= pHandle->position;
     interrupts();
     return pos; 
 }

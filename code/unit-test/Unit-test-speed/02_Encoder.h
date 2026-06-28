@@ -17,13 +17,13 @@ typedef struct
 	uint8_t pinA;
 	uint8_t pinB;
 	volatile uint8_t state;
-	volatile uint32_t position;
+	volatile int32_t position;
 
 	uint8_t id;
 } Encoder_Handle;
 
 Encoder_PUBLIC(void) Encoder_Init(Encoder_Handle *pHandle);
-Encoder_PUBLIC(uint32_t) Encoder_GetPosition(Encoder_Handle *pHandle);
+Encoder_PUBLIC(int32_t) Encoder_GetPosition(Encoder_Handle *pHandle);
 #ifdef __cplusplus
 }
 #endif

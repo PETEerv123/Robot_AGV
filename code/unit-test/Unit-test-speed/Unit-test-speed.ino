@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-#include "./src/program.h"
-=======
+
 #include "01_program.h"
 
->>>>>>> master
 
 void setup() {
   // put your setup code here, to run once:
