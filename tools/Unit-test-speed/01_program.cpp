@@ -4,8 +4,8 @@
 #include <Arduino.h>
 #include <stdio.h>
 
-#define kp 1.0f
-#define ki 0.01f
+#define kp 30.0f
+#define ki 5.0f
 #define kd 0.0f
 float setpoint;
 /*Private Marco*/
@@ -33,7 +33,11 @@ void main_loop(void) {
     String input = Serial.readStringUntil('\n');
     setpoint = input.toFloat();
   }
-  Motor_Encoder_Processing(&motor_FL, setpoint);
+  Motor_Encoder_Run(&motor_FL,setpoint);
+//  Motor_Encoder_Processing/(&motor_FL, setpoint);
+  Serial.print(setpoint, 2);
+  Serial.print(", ");
+  Serial.println((Encoder_GetPosition(&motor_FL.Motor_Encoder_Pin.encoder) * 360.0f) / TICKS_PER_REV,2);
 }
 
 // void Event_SerialPrint(void){

@@ -10,11 +10,15 @@ extern "C"
 #define PIN_ENCODER_FL_A       2
 #define PIN_ENCODER_FL_B       24
 
-#define PIN_MOTOR_FL_LPWM      4
-#define PIN_MOTOR_FL_RPWM      5
-#define PIN_MOTOR_FL_LEN       22
-#define PIN_MOTOR_FL_REN       23
+//#define PIN_MOTOR_FL_LPWM      4
+//#define PIN_MOTOR_FL_RPWM      5
+//#define PIN_MOTOR_FL_LEN       22
+//#define PIN_MOTOR_FL_REN       23
 
+#define PIN_MOTOR_FL_LPWM      7
+#define PIN_MOTOR_FL_RPWM      6
+#define PIN_MOTOR_FL_LEN       12
+#define PIN_MOTOR_FL_REN       13
 
 #define PIN_ENCODER_FR_A       3
 #define PIN_ENCODER_FR_B       25
