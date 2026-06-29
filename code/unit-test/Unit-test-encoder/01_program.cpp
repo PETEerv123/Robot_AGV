@@ -1,5 +1,6 @@
 #include "01_program.h"
 #include "02_Encoder.h"
+#include "define.h"
 #include <Arduino.h>
 
 
@@ -13,7 +14,7 @@ Encoder_Handle Encoder_BR; //back  right
 /*Private Variables*/
 void set_up(void) {
   Serial.begin(115200);
-  Serial.println("Unit test speed");
+  Serial.println("Unit test Encoder");
   Encoder_FL.pinA = PIN_ENCODER_FL_A;
   Encoder_FL.pinB = PIN_ENCODER_FL_B;
   Encoder_FL.id = 0;  // bật ngắt cho id 0
@@ -35,7 +36,7 @@ void set_up(void) {
   Encoder_Init(&Encoder_BR);
 }
 void main_loop(void) {
-  char buffer[50];
+  char buffer[250];
   sprintf(buffer, "Encoder FL: %ld, Encoder FR: %ld, Encoder BL: %ld, Encoder BR: %ld", 
           Encoder_GetPosition(&Encoder_FL), 
           Encoder_GetPosition(&Encoder_FR), 
