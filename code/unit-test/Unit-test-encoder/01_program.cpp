@@ -14,7 +14,7 @@ Encoder_Handle Encoder_BR; //back  right
 /*Private Variables*/
 void set_up(void) {
   Serial.begin(115200);
-  Serial.println("Unit test speed");
+  Serial.println("Unit test Encoder");
   Encoder_FL.pinA = PIN_ENCODER_FL_A;
   Encoder_FL.pinB = PIN_ENCODER_FL_B;
   Encoder_FL.id = 0;  // bật ngắt cho id 0
