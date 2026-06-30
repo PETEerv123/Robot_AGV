@@ -47,12 +47,16 @@ MOTOR_PUBLIC(void) Motor_Encoder_ResetSpeedPID(Motor_Encoder *pHandle){
 }
 /* Position PID Functions */
 MOTOR_PUBLIC(void) Motor_Encoder_Processing(Motor_Encoder *pHandle,float setpoint){
-    float feedback = (Encoder_GetPosition(&pHandle->Motor_Encoder_Pin.encoder) * 360.0f)/ TICKS_PER_REV;
+     if(pHandle == NULL) return;
+    float feedback =((float)Encoder_GetPosition(&pHandle->Motor_Encoder_Pin.encoder)* 360.0f) / TICKS_PER_REV;
 
+    feedback = fmodf(feedback, 360.0f);
 
-//    float error = AngleWrap(setpoint - feedback);/
+    if(feedback < 0.0f)
+        feedback += 360.0f;
+    float error = AngleWrap(setpoint - feedback);
 
-    float output =  PIDControl_Calc(&pHandle->position_PID,setpoint, feedback);
+    float output =  PIDControl_Calc(&pHandle->position_PID,error, 0.0f);
     Motor_Encoder_Run(pHandle, (int16_t)output);
 }
 MOTOR_PUBLIC(void) Motor_Encoder_SetPositionPID(Motor_Encoder *pHandle, float Kp, float Ki, float Kd, float outMax){

@@ -10,23 +10,14 @@ extern "C"
 #define PIN_ENCODER_FL_A       2
 #define PIN_ENCODER_FL_B       24
 
-//#define PIN_MOTOR_FL_LPWM      4
-//#define PIN_MOTOR_FL_RPWM      5
-//#define PIN_MOTOR_FL_LEN       22
-//#define PIN_MOTOR_FL_REN       23
 
-#define PIN_MOTOR_FL_LPWM      7
-#define PIN_MOTOR_FL_RPWM      6
+#define PIN_MOTOR_FL_LPWM      6
+#define PIN_MOTOR_FL_RPWM      7
 #define PIN_MOTOR_FL_LEN       12
 #define PIN_MOTOR_FL_REN       13
 
-#define PIN_ENCODER_FR_A       3
-#define PIN_ENCODER_FR_B       25
+
 /*Back Encoder Pins*/
-#define PIN_ENCODER_BL_A       18
-#define PIN_ENCODER_BL_B       26
-#define PIN_ENCODER_BR_A       19
-#define PIN_ENCODER_BR_B       27
 
 #define ENCODER_PPR      13.0f
 #define GEAR_RATIO       19.2f
