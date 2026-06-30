@@ -46,9 +46,14 @@ MOTOR_PUBLIC(void) Motor_Encoder_ResetSpeedPID(Motor_Encoder *pHandle){
     PIDControl_Reset(&pHandle->speed_PID);
 }
 /* Position PID Functions */
+MOTOR_PUBLIC(float) Motor_Encoder_GetPosition(Motor_Encoder *pHandle){
+    float theta_mech = (Encoder_GetPosition(&pHandle->Motor_Encoder_Pin.encoder) * 360.0f)/ TICKS_PER_REV;
+    return theta_mech;
+}
+
 MOTOR_PUBLIC(void) Motor_Encoder_Processing(Motor_Encoder *pHandle,float setpoint){
-    float feedback = (Encoder_GetPosition(&pHandle->Motor_Encoder_Pin.encoder) * 360.0f)/ TICKS_PER_REV;
-    
+    float feedback = Motor_Encoder_GetPosition(pHandle);
+
     feedback = fmodf(feedback, 360.0f);
     if(feedback < 0.0f)
         feedback += 360.0f;

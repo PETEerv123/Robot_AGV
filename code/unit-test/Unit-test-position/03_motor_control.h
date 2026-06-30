@@ -34,6 +34,7 @@ MOTOR_PUBLIC(float) Motor_Encoder_CalcSpeedPID(Motor_Encoder *pHandle, float set
 MOTOR_PUBLIC(void)  Motor_Encoder_ResetSpeedPID(Motor_Encoder *pHandle);
 
 /* Position PID Functions */
+MOTOR_PUBLIC(float) Motor_Encoder_GetPosition(Motor_Encoder *pHandle);
 MOTOR_PUBLIC(void) Motor_Encoder_Processing(Motor_Encoder *pHandle,float setpoint);
 
 MOTOR_PUBLIC(void)  Motor_Encoder_SetPositionPID(Motor_Encoder *pHandle, float Kp, float Ki, float Kd, float outMax);
