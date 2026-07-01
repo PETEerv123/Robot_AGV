@@ -36,6 +36,3 @@ void main_loop(void) {
   Motor_Encoder_Position_Processing(&motor_FL, setpoint);
 }
 
-// void Event_SerialPrint(void){
-//     char
-// }
