@@ -17,13 +17,13 @@ typedef struct
 	float fMaxSumErr;
 	float fKp;
 	float fKi;
-    float fKd;
+  float fKd;
 	float fpreProportional;
 	float fErr[2];
 	float fOuputValue;
 	float fOutputLimit;
-    float prevT ;
-    float lastT ;
+  float prevT ;
+  float lastT ;
 //	float fTs;
 }PIDControl_handle_t;
 
@@ -36,5 +36,3 @@ PID_PUBLIC(float) PIDControl_Calc(PIDControl_handle_t *pHandle, float fSetpoint,
 }
 #endif
 #endif
-
-

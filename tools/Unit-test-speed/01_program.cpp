@@ -4,8 +4,8 @@
 #include <Arduino.h>
 #include <stdio.h>
 
-#define kp 1.0f
-#define ki 0.01f
+#define kp 5.0f
+#define ki 0.1f
 #define kd 0.0f
 float setpoint;
 /*Private Marco*/
@@ -14,7 +14,7 @@ Motor_Encoder motor_FL;
 /*Private Variables*/
 void set_up(void) {
   Serial.begin(115200);
-  Serial.println("Unit test speed");
+  Serial.println("Unit test position");
   motor_FL.Motor_Encoder_Pin.encoder.pinA = PIN_ENCODER_FL_A;
   motor_FL.Motor_Encoder_Pin.encoder.pinB = PIN_ENCODER_FL_B;
   motor_FL.Motor_Encoder_Pin.encoder.id   = 0;
