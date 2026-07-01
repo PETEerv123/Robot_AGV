@@ -33,7 +33,7 @@ void main_loop(void) {
     String input = Serial.readStringUntil('\n');
     setpoint = input.toFloat();
   }
-  Motor_Encoder_Processing(&motor_FL, setpoint);
+  Motor_Encoder_Position_Processing(&motor_FL, setpoint);
 }
 
 // void Event_SerialPrint(void){

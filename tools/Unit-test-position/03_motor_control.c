@@ -51,7 +51,7 @@ MOTOR_PUBLIC(float) Motor_Encoder_GetPosition(Motor_Encoder *pHandle){
     return theta_mech;
 }
 
-MOTOR_PUBLIC(void) Motor_Encoder_Processing(Motor_Encoder *pHandle,float setpoint){
+MOTOR_PUBLIC(void) Motor_Encoder_Position_Processing(Motor_Encoder *pHandle,float setpoint){
     float feedback = Motor_Encoder_GetPosition(pHandle);
 
     feedback = fmodf(feedback, 360.0f);
