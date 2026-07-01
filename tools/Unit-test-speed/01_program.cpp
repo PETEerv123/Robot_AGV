@@ -14,7 +14,7 @@ Motor_Encoder motor_FL;
 /*Private Variables*/
 void set_up(void) {
   Serial.begin(115200);
-  Serial.println("Unit test position");
+  Serial.println("Unit test speed");
   motor_FL.Motor_Encoder_Pin.encoder.pinA = PIN_ENCODER_FL_A;
   motor_FL.Motor_Encoder_Pin.encoder.pinB = PIN_ENCODER_FL_B;
   motor_FL.Motor_Encoder_Pin.encoder.id   = 0;

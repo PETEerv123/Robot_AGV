@@ -36,6 +36,8 @@ MOTOR_PUBLIC(void) Motor_Encoder_Stop(Motor_Encoder *pHandle){
     analogWrite(pHandle->Motor_Encoder_Pin.LPWM_pin, 0);
 }
 /* Speed PID Functions */
+MOTOR_PUBLIC(void) Motor_Encoder_Positi_Processing(Motor_Encoder *pHandle,float setpoint){
+
 MOTOR_PUBLIC(void) Motor_Encoder_SetSpeedPID(Motor_Encoder *pHandle, float Kp, float Ki, float Kd, float outMax){
     PIDControl_SetParam(&pHandle->speed_PID, 1000.0f, Kp, Ki, Kd, outMax);
 }
