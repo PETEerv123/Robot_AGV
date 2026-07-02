@@ -11,15 +11,12 @@ extern "C"{
 #define MOTOR_PUBLIC(type) type
 #define MOTOR_PRIVATE(type) static type
 
-typedef struct {
-  volatile int32_t prevPos;
-  volatile int32_t currPos;
-  volatile uint32_t prevT;
-  volatile uint32_t CurrT;
-  float speed_rads;
-  float speed_vms;
-}Motor_Speed_t;
 
+typedef struct {
+  uint32_t prevT;
+  uint32_t prevPos;
+  volatile float rps;
+}SpeedParam_t;
 typedef struct
 {
   struct{
@@ -31,14 +28,15 @@ typedef struct
   } Motor_Encoder_Pin;
   PIDControl_handle_t speed_PID;  
   PIDControl_handle_t position_PID;  
-  Motor_Speed_t speedInfo;
+  SpeedParam_t speedInfo;
+
 }Motor_Encoder;
 /*Basic Control Motor*/
 MOTOR_PUBLIC(void) Motor_Encoder_Init(Motor_Encoder *pHandle);
 MOTOR_PUBLIC(void) Motor_Encoder_Run(Motor_Encoder *pHandle, int16_t pwm);
 MOTOR_PUBLIC(void) Motor_Encoder_Stop(Motor_Encoder *pHandle);
 /* Speed PID Functions */
-MOTOR_PUBLIC(float) Motor_Encoder_GetSpeed(Motor_Encoder *pHandle);
+MOTOR_PUBLIC(void) Motor_Encoder_GetSpeed(Motor_Encoder *pHandle);
 
 MOTOR_PUBLIC(void) Motor_Encoder_SpeedPID_Procces(Motor_Encoder *pHandle, float setpoint);
 

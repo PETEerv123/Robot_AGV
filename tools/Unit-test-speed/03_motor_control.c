@@ -17,7 +17,6 @@ MOTOR_PUBLIC(void) Motor_Encoder_Init(Motor_Encoder *pHandle){
   digitalWrite(pHandle->Motor_Encoder_Pin.REN_pin, HIGH);
   digitalWrite(pHandle->Motor_Encoder_Pin.LEN_pin, HIGH);
 
-  pHandle->speedInfo.CurrT = millis();
 }
 MOTOR_PUBLIC(void) Motor_Encoder_Run(Motor_Encoder *pHandle, int16_t pwm){
   if(pHandle == NULL) return;
@@ -38,29 +37,37 @@ MOTOR_PUBLIC(void) Motor_Encoder_Stop(Motor_Encoder *pHandle){
     analogWrite(pHandle->Motor_Encoder_Pin.LPWM_pin, 0);
 }
 /* Speed PID Functions */
-MOTOR_PUBLIC(float) Motor_Encoder_GetSpeed(Motor_Encoder *pHandle) {
-  if (pHandle == NULL) return 0.0f;
-  pHandle->speedInfo.CurrT = millis();
+MOTOR_PUBLIC(void) Motor_Encoder_GetSpeed(Motor_Encoder *pHandle){
+    if(pHandle == NULL) return 0.0f;
 
-  pHandle->speedInfo.currPos = Encoder_GetPosition(&pHandle->Motor_Encoder_Pin.encoder);
-  int32_t delta_tick = pHandle->speedInfo.currPos - pHandle->speedInfo.prevPos;
-  pHandle->speedInfo.prevPos = pHandle->speedInfo.currPos;
-
-  int32_t delta_time = (pHandle->speedInfo.CurrT - pHandle->speedInfo.prevT) * 1000;  // covert to seconds
-  pHandle->speedInfo.prevT =  pHandle->speedInfo.CurrT;
-  float rev = (float)(delta_tick / TICKS_PER_REV);                                   // number of revolutions
-  float speed = (float)(rev / delta_time);
-  return speed;
+    uint32_t now = millis();
+    if(now - pHandle->speedInfo.prevT >= 10){
+      int32_t currPos = Encoder_GetPosition(&pHandle->Motor_Encoder_Pin.encoder);
+  
+      int32_t delta_tick = currPos - pHandle->speedInfo.prevPos;
+  
+      float dt = (now - pHandle->speedInfo.prevT) * 0.001f;
+  
+      pHandle->speedInfo.prevPos = currPos;
+      pHandle->speedInfo.prevT   = now;
+  
+      if(dt <= 0.0f)
+          return 0.0f;
+  
+      float rev = (float)delta_tick / (float)TICKS_PER_REV;
+  
+      pHandle->speedInfo.rps = (float)(rev / dt);
+    }
 }
 
 MOTOR_PUBLIC(void) Motor_Encoder_SpeedPID_Procces(Motor_Encoder *pHandle, float setpoint){
-    float feedback = Motor_Encoder_GetSpeed(pHandle);
-    pHandle->speedInfo.speed_vms = feedback *  WHEEL_CIRC;
-    float output = PIDControl_Calc(&pHandle->speed_PID, setpoint, feedback);
+    Motor_Encoder_GetSpeed(pHandle);
+    float vm_s = pHandle->speedInfo.rps *  WHEEL_CIRC;
+    float output = PIDControl_Calc(&pHandle->speed_PID, setpoint,vm_s);
     Motor_Encoder_Run(pHandle, (int16_t)output);
 }
 MOTOR_PUBLIC(void) Motor_Encoder_SetSpeedPID(Motor_Encoder *pHandle, float Kp, float Ki, float Kd, float outMax){
-    PIDControl_SetParam(&pHandle->speed_PID, 1000.0f, Kp, Ki, Kd, outMax);
+    PIDControl_SetParam(&pHandle->speed_PID, 3.0f, Kp, Ki, Kd, outMax);
 }
 MOTOR_PUBLIC(float) Motor_Encoder_CalcSpeedPID(Motor_Encoder *pHandle, float setpoint, float feedback){
     return PIDControl_Calc(&pHandle->speed_PID, setpoint, feedback);
