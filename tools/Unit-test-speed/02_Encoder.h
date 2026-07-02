@@ -18,7 +18,6 @@ typedef struct
 	uint8_t pinB;
 	volatile uint8_t state;
 	volatile int32_t position;
-
 	uint8_t id;
 } Encoder_Handle;
 

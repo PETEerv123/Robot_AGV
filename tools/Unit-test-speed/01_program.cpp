@@ -76,18 +76,11 @@ void main_loop(void) {
     String input = Serial.readStringUntil('\n');
     setpoint = input.toFloat();
   }
-    Motor_Encoder_Position_Processing(&motor_FL, setpoint);
-    Motor_Encoder_Position_Processing(&motor_FR, setpoint);
-    Motor_Encoder_Position_Processing(&motor_BL, setpoint);
-    Motor_Encoder_Position_Processing(&motor_BR, setpoint);
-    Serial.print(setpoint);
-    Serial.print(" ");
-    Serial.print(Motor_Encoder_GetPosition(&motor_FL));
-    Serial.print(" ");
-    Serial.print(Motor_Encoder_GetPosition(&motor_FR));
-    Serial.print(" ");
-    Serial.print(Motor_Encoder_GetPosition(&motor_BL));
-    Serial.print(" ");
-    Serial.println(Motor_Encoder_GetPosition(&motor_BR));
+  Motor_Encoder_PositionPID_Process(&motor_FL, setpoint);
+  Motor_Encoder_PositionPID_Process(&motor_FR, setpoint);
+  Serial.print("FL: ");
+  Serial.print(Motor_Encoder_GetPosition(&motor_FL));
+  Serial.print(" | FR: ");
+  Serial.println(Motor_Encoder_GetPosition(&motor_FR));
 
 }
