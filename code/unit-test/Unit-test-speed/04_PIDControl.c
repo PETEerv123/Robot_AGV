@@ -16,14 +16,14 @@ PID_PUBLIC(void) PIDControl_Reset(PIDControl_handle_t *pHandle){
 	pHandle->fErr[1] = 0;
 	pHandle->fpreProportional = 0;
 	pHandle->fOuputValue = 0;
-    pHandle->lastT = micros();
-    pHandle->prevT = pHandle->lastT;
+  pHandle->lastT = micros();
+  pHandle->prevT = pHandle->lastT;
 }
 
 PID_PUBLIC(float) PIDControl_Calc(PIDControl_handle_t *pHandle, float fSetpoint, float fFeedback){
 
     pHandle->prevT = micros();
-	pHandle->fErr[0] = fSetpoint - fFeedback;
+	  pHandle->fErr[0] = fSetpoint - fFeedback;
 //	pHandle->fSumErr += pHandle->fErr[0];
 
     float dt = (pHandle->prevT - pHandle->lastT)/1e6;  

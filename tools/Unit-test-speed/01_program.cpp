@@ -76,13 +76,19 @@ void main_loop(void) {
     String input = Serial.readStringUntil('\n');
     setpoint = input.toFloat();
   }
-  Motor_Encoder_SpeedPID_Procces(&motor_FL, -setpoint);
-  Motor_Encoder_SpeedPID_Procces(&motor_FR, setpoint);
+  Motor_Encoder_SpeedPID_Procces(&motor_FL,-setpoint);
+  Motor_Encoder_SpeedPID_Procces(&motor_FR,setpoint);
+  Motor_Encoder_SpeedPID_Procces(&motor_BL,-setpoint);
+  Motor_Encoder_SpeedPID_Procces(&motor_BR,setpoint);
   Serial.print("Setpoint: ");
   Serial.print(setpoint);
   Serial.print("FL: ");
   Serial.print(motor_FL.speedInfo.rps * -WHEEL_CIRC);
   Serial.print(" | FR: ");
-  Serial.println(motor_FR.speedInfo.rps * WHEEL_CIRC);
+  Serial.print(motor_FR.speedInfo.rps * WHEEL_CIRC);
+  Serial.print(" | BL: ");
+  Serial.print(motor_BL.speedInfo.rps * -WHEEL_CIRC);
+  Serial.print(" | BR: ");
+  Serial.prinln(motor_BR.speedInfo.rps * WHEEL_CIRC);
 
 }
