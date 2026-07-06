@@ -43,16 +43,4 @@ void main_loop(void) {
           Encoder_GetPosition(&Encoder_BL), 
           Encoder_GetPosition(&Encoder_BR));
   Serial.println(buffer);
-  // unsigned long now = millis();
-  // float dt = (now - lastTime) / 1000.0;
-  // lastTime = now;
-  // long ticks = Encoder_FL.read();6311
-  // long delta = ticks - prevTicks;
-  // prevTicks = ticks;
-
-  // float rev = delta / TICKS_PER_REV;
-  // float vCurrent = (rev * WHEEL_CIRC) / dt;
 }
-// void Event_SerialPrint(void){
-//     char
-// }
