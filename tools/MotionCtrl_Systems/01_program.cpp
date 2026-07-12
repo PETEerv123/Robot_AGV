@@ -1,22 +1,38 @@
 #include "01_program.h"
 #include "03_motor_control.h"
+#include "Adafruit_BNO08x.h"
 #include "define.h"
 #include <Arduino.h>
 #include <stdio.h>
-
-#define kp 110.0f
-#define ki 35.0f
-#define kd 0.0f
-float setpoint;
-/*Private Marco*/
+/*Configure Library*/
 Motor_Encoder motor_FL;
 Motor_Encoder motor_FR;
 Motor_Encoder motor_BL;
 Motor_Encoder motor_BR;
+/*Private Marco*/
+#define kp 110.0f
+#define ki 35.0f
+#define kd 0.0f
+
+Adafruit_BNO08x bno08x(-1);
+sh2_SensorValue_t imuValue;
+
+volatile bool stringComplete;
+float vTarget[4];
+float vx,vy,wz;
 /*Private Variables*/
 void set_up(void) {
   Serial.begin(115200);
-  Serial.println("Unit test position");
+  Wire.begin();
+  Serial.println("Mototion Control Systems");
+  if (!bno08x.begin_I2C()) {
+    Serial.println("BNO085 not detected");
+    while (1);
+  }else {
+    Serial.println("BNO085 Init Success");
+  }
+  bno08x.enableReport(SH2_GAME_ROTATION_VECTOR);
+
   /*Config Front Left*/
   motor_FL.Motor_Encoder_Pin.encoder.pinA = PIN_ENCODER_FL_A;
   motor_FL.Motor_Encoder_Pin.encoder.pinB = PIN_ENCODER_FL_B; 
@@ -72,23 +88,46 @@ void set_up(void) {
   Motor_Encoder_ResetSpeedPID(&motor_BR);
 }
 void main_loop(void) {
-  if(Serial.available() > 0){
-    String input = Serial.readStringUntil('\n');
-    setpoint = input.toFloat();
+  if(stringComplete){
+    vTarget[0] = vx - vy - wz * (L + d);      // FL
+    vTarget[1] = vx + vy + wz * (L + d);      // FR
+    vTarget[2] = vx + vy - wz * (L + d);      // BL
+    vTarget[3] = vx - vy + wz * (L + d);      // BR
+    Serial.print(vx);
+    Serial.print(" ");
+    Serial.print(vy);
+    Serial.print(" ");
+    Serial.println(wz);
+    stringComplete = false;
   }
-  Motor_Encoder_SpeedPID_Procces(&motor_FL,-setpoint);
-  Motor_Encoder_SpeedPID_Procces(&motor_FR,setpoint);
-  Motor_Encoder_SpeedPID_Procces(&motor_BL,-setpoint);
-  Motor_Encoder_SpeedPID_Procces(&motor_BR,setpoint);
-  Serial.print("Setpoint: ");
-  Serial.print(setpoint);
-  Serial.print("FL: ");
-  Serial.print(motor_FL.speedInfo.rps * -WHEEL_CIRC);
-  Serial.print(" | FR: ");
-  Serial.print(motor_FR.speedInfo.rps * WHEEL_CIRC);
-  Serial.print(" | BL: ");
-  Serial.print(motor_BL.speedInfo.rps * -WHEEL_CIRC);
-  Serial.print(" | BR: ");
-  Serial.prinln(motor_BR.speedInfo.rps * WHEEL_CIRC);
+  
+  Motor_Encoder_SpeedPID_Procces(&motor_FL,-vTarget[0]);
+  Motor_Encoder_SpeedPID_Procces(&motor_BL,-vTarget[1]);
+  Motor_Encoder_SpeedPID_Procces(&motor_BR,vTarget[2]);
+  Motor_Encoder_SpeedPID_Procces(&motor_FR,vTarget[3]);
+  float Vx_est =  (WHEEL_CIRC * (motor_FL.speedInfo.rps + motor_BL.speedInfo.rps + motor_BR.speedInfo.rps + motor_FR.speedInfo.rps)) / 4.0f;
+  float Vy_est =  (WHEEL_CIRC * (motor_FL.speedInfo.rps - motor_BL.speedInfo.rps + motor_BR.speedInfo.rps - motor_FR.speedInfo.rps)) / 4.0f;
+  float wz_est =  (WHEEL_CIRC * (-motor_FL.speedInfo.rps - motor_BL.speedInfo.rps + motor_BR.speedInfo.rps + motor_FR.speedInfo.rps )) / (4.0f * (d - L));
+  // float imuYaw = theta_fused;
+  // if (bno08x.getSensorEvent(&imuValue)) {
+  //   if (imuValue.sensorId == SH2_GAME_ROTATION_VECTOR) {
+  //     float qw = imuValue.un.gameRotationVector.real;
+  //     float qx = imuValue.un.gameRotationVector.i;
+  //     float qy = imuValue.un.gameRotationVector.j;
+  //     float qz = imuValue.un.gameRotationVector.k;
 
+  //     float imuYaw = atan2( 2.0 * (qw * qz + qx * qy),1.0 - 2.0 * (qy * qy + qz * qz));
+  //   }
+  // }
+  // const float ALPHA = 0.95;
+  // float theta_enc = theta_fused + wz_est * dt;
+  // theta_fused = ALPHA * theta_enc + (1.0 - ALPHA) * imuYaw;
+}
+void serialEvent() {
+  while (Serial.available()) {
+    String cmd = Serial.readStringUntil('\n');
+    if (sscanf(cmd.c_str(), "%f %f %f", &vx, &vy, &wz) == 3) {
+        stringComplete = true;
+    }
+  }
 }

@@ -51,9 +51,9 @@ extern "C"
 #define QUAD_FACTOR      4.0f
 #define TICKS_PER_REV    (ENCODER_PPR * GEAR_RATIO * QUAD_FACTOR)
 
-#define L  0.27     // meters
-#define W  0.27     // meters
-#define R  0.075    // meters
+#define d 275.0f
+#define L 260.0f
+#define R 50.0f //50mm
 #define WHEEL_CIRC  2.0 * M_PI * R
 
 #ifdef __cplusplus
