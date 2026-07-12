@@ -4,22 +4,25 @@
 #include "define.h"
 #include <Arduino.h>
 #include <stdio.h>
+#include <stdlib.h>
 /*Configure Library*/
 Motor_Encoder motor_FL;
 Motor_Encoder motor_FR;
 Motor_Encoder motor_BL;
 Motor_Encoder motor_BR;
+
+Adafruit_BNO08x bno08x(-1);
+sh2_SensorValue_t imuValue;
 /*Private Marco*/
 #define kp 110.0f
 #define ki 35.0f
 #define kd 0.0f
 
-Adafruit_BNO08x bno08x(-1);
-sh2_SensorValue_t imuValue;
 
+String inputString = "";
 volatile bool stringComplete;
 float vTarget[4];
-float vx,vy,wz;
+float vx, vy, wz;
 /*Private Variables*/
 void set_up(void) {
   Serial.begin(115200);
@@ -28,14 +31,14 @@ void set_up(void) {
   if (!bno08x.begin_I2C()) {
     Serial.println("BNO085 not detected");
     while (1);
-  }else {
+  } else {
     Serial.println("BNO085 Init Success");
   }
   bno08x.enableReport(SH2_GAME_ROTATION_VECTOR);
 
   /*Config Front Left*/
   motor_FL.Motor_Encoder_Pin.encoder.pinA = PIN_ENCODER_FL_A;
-  motor_FL.Motor_Encoder_Pin.encoder.pinB = PIN_ENCODER_FL_B; 
+  motor_FL.Motor_Encoder_Pin.encoder.pinB = PIN_ENCODER_FL_B;
   motor_FL.Motor_Encoder_Pin.encoder.id   = 0;
 
   motor_FL.Motor_Encoder_Pin.RPWM_pin = PIN_MOTOR_FL_RPWM;
@@ -73,7 +76,7 @@ void set_up(void) {
   Motor_Encoder_SetSpeedPID(&motor_BL, kp, ki, kd, 10);
   Motor_Encoder_ResetSpeedPID(&motor_BL);
   /*Config Back Right*/
-    /*Config Back Left*/
+  /*Config Back Left*/
   motor_BR.Motor_Encoder_Pin.encoder.pinA = PIN_ENCODER_BR_A;
   motor_BR.Motor_Encoder_Pin.encoder.pinB = PIN_ENCODER_BR_B;
   motor_BR.Motor_Encoder_Pin.encoder.id   = 3;
@@ -88,23 +91,23 @@ void set_up(void) {
   Motor_Encoder_ResetSpeedPID(&motor_BR);
 }
 void main_loop(void) {
-  if(stringComplete){
-    vTarget[0] = vx - vy - wz * (L + d);      // FL
-    vTarget[1] = vx + vy + wz * (L + d);      // FR
-    vTarget[2] = vx + vy - wz * (L + d);      // BL
-    vTarget[3] = vx - vy + wz * (L + d);      // BR
-    Serial.print(vx);
-    Serial.print(" ");
-    Serial.print(vy);
-    Serial.print(" ");
-    Serial.println(wz);
+  if (stringComplete) {
+    vTarget[0] = vx + vy - wz * (d - L);      // FL
+    vTarget[1] = vx - vy - wz * (d - L);      // BL
+    vTarget[2] = vx + vy + wz * (d - L);      // BR
+    vTarget[3] = vx - vy + wz * (d - L);      // FR
     stringComplete = false;
+//    Serial.print(vx);
+//    Serial.print(" ");
+//    Serial.print(vy);
+//    Serial.print(" ");
+//    Serial.println(wz);
   }
-  
-  Motor_Encoder_SpeedPID_Procces(&motor_FL,-vTarget[0]);
-  Motor_Encoder_SpeedPID_Procces(&motor_BL,-vTarget[1]);
-  Motor_Encoder_SpeedPID_Procces(&motor_BR,vTarget[2]);
-  Motor_Encoder_SpeedPID_Procces(&motor_FR,vTarget[3]);
+
+  Motor_Encoder_SpeedPID_Procces(&motor_FL, -vTarget[0]); //m/s
+  Motor_Encoder_SpeedPID_Procces(&motor_BL, -vTarget[1]);
+  Motor_Encoder_SpeedPID_Procces(&motor_BR, vTarget[2]);
+  Motor_Encoder_SpeedPID_Procces(&motor_FR, vTarget[3]);
   float Vx_est =  (WHEEL_CIRC * (motor_FL.speedInfo.rps + motor_BL.speedInfo.rps + motor_BR.speedInfo.rps + motor_FR.speedInfo.rps)) / 4.0f;
   float Vy_est =  (WHEEL_CIRC * (motor_FL.speedInfo.rps - motor_BL.speedInfo.rps + motor_BR.speedInfo.rps - motor_FR.speedInfo.rps)) / 4.0f;
   float wz_est =  (WHEEL_CIRC * (-motor_FL.speedInfo.rps - motor_BL.speedInfo.rps + motor_BR.speedInfo.rps + motor_FR.speedInfo.rps )) / (4.0f * (d - L));
@@ -125,9 +128,23 @@ void main_loop(void) {
 }
 void serialEvent() {
   while (Serial.available()) {
-    String cmd = Serial.readStringUntil('\n');
-    if (sscanf(cmd.c_str(), "%f %f %f", &vx, &vy, &wz) == 3) {
-        stringComplete = true;
+    char inChar = (char)Serial.read();
+    inputString += inChar;
+    if (inChar == '\n') {
+      char buf[64];
+      inputString.toCharArray(buf, sizeof(buf));
+
+      char *endString = strtok(buf, " ");
+      vx = atof(endString);
+
+      endString = strtok(NULL, " ");
+      vy = atof(endString);
+
+      endString = strtok(NULL, " ");
+      wz = atof(endString);
+
+      stringComplete = true;
+      inputString = "";
     }
   }
 }
