@@ -23,6 +23,9 @@ String inputString = "";
 volatile bool stringComplete;
 float vTarget[4];
 float vx, vy, wz;
+unsigned long last_time = 0;
+float imuYaw = 0.0f;
+float theta_fused = 0.0f;
 /*Private Variables*/
 void set_up(void) {
   Serial.begin(115200);
@@ -91,17 +94,17 @@ void set_up(void) {
   Motor_Encoder_ResetSpeedPID(&motor_BR);
 }
 void main_loop(void) {
+  unsigned long now = micros();
+  float dt = (now - last_time) / 1000000.0f; 
+  if (dt < 0.02f) return; 
+  last_time = now;
   if (stringComplete) {
     vTarget[0] = vx + vy - wz * (d - L);      // FL
     vTarget[1] = vx - vy - wz * (d - L);      // BL
     vTarget[2] = vx + vy + wz * (d - L);      // BR
     vTarget[3] = vx - vy + wz * (d - L);      // FR
     stringComplete = false;
-//    Serial.print(vx);
-//    Serial.print(" ");
-//    Serial.print(vy);
-//    Serial.print(" ");
-//    Serial.println(wz);
+
   }
 
   Motor_Encoder_SpeedPID_Procces(&motor_FL, -vTarget[0]); //m/s
@@ -111,20 +114,23 @@ void main_loop(void) {
   float Vx_est =  (WHEEL_CIRC * (motor_FL.speedInfo.rps + motor_BL.speedInfo.rps + motor_BR.speedInfo.rps + motor_FR.speedInfo.rps)) / 4.0f;
   float Vy_est =  (WHEEL_CIRC * (motor_FL.speedInfo.rps - motor_BL.speedInfo.rps + motor_BR.speedInfo.rps - motor_FR.speedInfo.rps)) / 4.0f;
   float wz_est =  (WHEEL_CIRC * (-motor_FL.speedInfo.rps - motor_BL.speedInfo.rps + motor_BR.speedInfo.rps + motor_FR.speedInfo.rps )) / (4.0f * (d - L));
-  // float imuYaw = theta_fused;
-  // if (bno08x.getSensorEvent(&imuValue)) {
-  //   if (imuValue.sensorId == SH2_GAME_ROTATION_VECTOR) {
-  //     float qw = imuValue.un.gameRotationVector.real;
-  //     float qx = imuValue.un.gameRotationVector.i;
-  //     float qy = imuValue.un.gameRotationVector.j;
-  //     float qz = imuValue.un.gameRotationVector.k;
+  if (bno08x.getSensorEvent(&imuValue)) {
+    if (imuValue.sensorId == SH2_GAME_ROTATION_VECTOR) {
+      float qw = imuValue.un.gameRotationVector.real;
+      float qx = imuValue.un.gameRotationVector.i;
+      float qy = imuValue.un.gameRotationVector.j;
+      float qz = imuValue.un.gameRotationVector.k;
 
-  //     float imuYaw = atan2( 2.0 * (qw * qz + qx * qy),1.0 - 2.0 * (qy * qy + qz * qz));
-  //   }
-  // }
-  // const float ALPHA = 0.95;
-  // float theta_enc = theta_fused + wz_est * dt;
-  // theta_fused = ALPHA * theta_enc + (1.0 - ALPHA) * imuYaw;
+      imuYaw = atan2( 2.0 * (qw * qz + qx * qy),1.0 - 2.0 * (qy * qy + qz * qz));
+    }
+  }
+  const float ALPHA = 0.95;
+  float theta_enc = theta_fused + wz_est * dt;
+  theta_fused = ALPHA * theta_enc + (1.0 - ALPHA) * imuYaw;
+  Serial.print(Vx_est, 3); Serial.print(" ");
+  Serial.print(Vy_est, 3); Serial.print(" ");
+  Serial.print(wz_est, 3); Serial.print(" ");
+  Serial.println(theta_fused, 3);`
 }
 void serialEvent() {
   while (Serial.available()) {
