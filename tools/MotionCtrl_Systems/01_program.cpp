@@ -96,7 +96,7 @@ void set_up(void) {
 void main_loop(void) {
   unsigned long now = micros();
   float dt = (now - last_time) / 1000000.0f; 
-  if (dt < 0.02f) return; 
+  if (dt < 0.01f) return;  // 100 Hz
   last_time = now;
   if (stringComplete) {
     vTarget[0] = vx + vy - wz * (d - L);      // FL
@@ -127,10 +127,11 @@ void main_loop(void) {
   const float ALPHA = 0.95;
   float theta_enc = theta_fused + wz_est * dt;
   theta_fused = ALPHA * theta_enc + (1.0 - ALPHA) * imuYaw;
-  Serial.print(Vx_est, 3); Serial.print(" ");
-  Serial.print(Vy_est, 3); Serial.print(" ");
+  Serial.print("ODM");Serial.print(",");
+  Serial.print(Vx_est, 3); Serial.print(",");
+  Serial.print(Vy_est, 3); Serial.print(",");
   Serial.print(wz_est, 3); Serial.print(" ");
-  Serial.println(theta_fused, 3);`
+  Serial.println(theta_fused, 3);
 }
 void serialEvent() {
   while (Serial.available()) {
