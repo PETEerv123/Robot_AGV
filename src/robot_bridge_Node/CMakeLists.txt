@@ -14,6 +14,23 @@ find_package(sensor_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(serial REQUIRED)
 
+
+add_executable(serial_bridge_node src/Serial_Bridge_Node.cpp)
+
+ament_target_dependencies(serial_bridge_node
+  rclcpp
+  geometry_msgs
+  nav_msgs
+  sensor_msgs
+  tf2_ros
+)
+
+target_link_libraries(serial_bridge_node serial)
+
+install(TARGETS serial_bridge_node 
+        DESTINATION lib/${PROJECT_NAME}
+)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
@@ -25,5 +42,4 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
-
 ament_package()
