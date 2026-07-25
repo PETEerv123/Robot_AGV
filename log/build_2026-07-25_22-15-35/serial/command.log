@@ -1,6 +1,0 @@
-Invoking command in '/home/jetson/Desktop/Robot_AGV/build/serial': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/jetson/Desktop/Robot_AGV/src/serial -DCMAKE_INSTALL_PREFIX=/home/jetson/Desktop/Robot_AGV/install/serial
-Invoked command in '/home/jetson/Desktop/Robot_AGV/build/serial' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/jetson/Desktop/Robot_AGV/src/serial -DCMAKE_INSTALL_PREFIX=/home/jetson/Desktop/Robot_AGV/install/serial
-Invoking command in '/home/jetson/Desktop/Robot_AGV/build/serial': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/jetson/Desktop/Robot_AGV/build/serial -- -j6 -l6
-Invoked command in '/home/jetson/Desktop/Robot_AGV/build/serial' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/jetson/Desktop/Robot_AGV/build/serial -- -j6 -l6
-Invoking command in '/home/jetson/Desktop/Robot_AGV/build/serial': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/jetson/Desktop/Robot_AGV/build/serial
-Invoked command in '/home/jetson/Desktop/Robot_AGV/build/serial' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/jetson/Desktop/Robot_AGV/build/serial
