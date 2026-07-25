@@ -1,0 +1,435 @@
+[0.195s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'serial']
+[0.195s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=6, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['serial'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0xffffa3317d90>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffffa3535120>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffffa3535120>>)
+[0.502s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.502s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.502s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.502s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.502s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.502s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.503s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/jetson/Desktop/Robot_AGV'
+[0.503s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.503s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.503s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.503s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.503s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.503s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.503s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.503s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.504s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.524s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.524s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.525s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.525s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.525s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.525s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems) by extensions ['ignore', 'ignore_ament_install']
+[0.525s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems) by extension 'ignore'
+[0.525s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems) by extension 'ignore_ament_install'
+[0.525s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems) by extensions ['colcon_pkg']
+[0.525s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems) by extension 'colcon_pkg'
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems) by extensions ['colcon_meta']
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems) by extension 'colcon_meta'
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems) by extensions ['ros']
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems) by extension 'ros'
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems) by extensions ['cmake', 'python']
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems) by extension 'cmake'
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems) by extension 'python'
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems) by extensions ['python_setup_py']
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems) by extension 'python_setup_py'
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware) by extensions ['ignore', 'ignore_ament_install']
+[0.527s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware) by extension 'ignore'
+[0.527s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware) by extension 'ignore_ament_install'
+[0.527s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware) by extensions ['colcon_pkg']
+[0.527s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware) by extension 'colcon_pkg'
+[0.527s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware) by extensions ['colcon_meta']
+[0.527s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware) by extension 'colcon_meta'
+[0.527s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware) by extensions ['ros']
+[0.527s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware) by extension 'ros'
+[0.527s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware) by extensions ['cmake', 'python']
+[0.527s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware) by extension 'cmake'
+[0.527s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware) by extension 'python'
+[0.527s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware) by extensions ['python_setup_py']
+[0.528s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware) by extension 'python_setup_py'
+[0.528s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical) by extensions ['ignore', 'ignore_ament_install']
+[0.528s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical) by extension 'ignore'
+[0.528s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical) by extension 'ignore_ament_install'
+[0.528s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical) by extensions ['colcon_pkg']
+[0.528s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical) by extension 'colcon_pkg'
+[0.528s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical) by extensions ['colcon_meta']
+[0.528s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical) by extension 'colcon_meta'
+[0.529s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical) by extensions ['ros']
+[0.529s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical) by extension 'ros'
+[0.529s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical) by extensions ['cmake', 'python']
+[0.529s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical) by extension 'cmake'
+[0.529s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical) by extension 'python'
+[0.529s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical) by extensions ['python_setup_py']
+[0.529s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical) by extension 'python_setup_py'
+[0.529s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/3D_Bambo) by extensions ['ignore', 'ignore_ament_install']
+[0.529s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/3D_Bambo) by extension 'ignore'
+[0.529s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/3D_Bambo) by extension 'ignore_ament_install'
+[0.530s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/3D_Bambo) by extensions ['colcon_pkg']
+[0.530s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/3D_Bambo) by extension 'colcon_pkg'
+[0.530s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/3D_Bambo) by extensions ['colcon_meta']
+[0.530s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/3D_Bambo) by extension 'colcon_meta'
+[0.530s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/3D_Bambo) by extensions ['ros']
+[0.530s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/3D_Bambo) by extension 'ros'
+[0.530s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/3D_Bambo) by extensions ['cmake', 'python']
+[0.530s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/3D_Bambo) by extension 'cmake'
+[0.530s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/3D_Bambo) by extension 'python'
+[0.530s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/3D_Bambo) by extensions ['python_setup_py']
+[0.530s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/3D_Bambo) by extension 'python_setup_py'
+[0.531s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library) by extensions ['ignore', 'ignore_ament_install']
+[0.531s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library) by extension 'ignore'
+[0.531s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library) by extension 'ignore_ament_install'
+[0.531s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library) by extensions ['colcon_pkg']
+[0.531s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library) by extension 'colcon_pkg'
+[0.531s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library) by extensions ['colcon_meta']
+[0.531s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library) by extension 'colcon_meta'
+[0.531s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library) by extensions ['ros']
+[0.531s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library) by extension 'ros'
+[0.531s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library) by extensions ['cmake', 'python']
+[0.531s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library) by extension 'cmake'
+[0.532s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library) by extension 'python'
+[0.532s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library) by extensions ['python_setup_py']
+[0.532s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library) by extension 'python_setup_py'
+[0.532s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Ga_Do_Assemly) by extensions ['ignore', 'ignore_ament_install']
+[0.532s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Ga_Do_Assemly) by extension 'ignore'
+[0.532s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Ga_Do_Assemly) by extension 'ignore_ament_install'
+[0.532s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Ga_Do_Assemly) by extensions ['colcon_pkg']
+[0.532s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Ga_Do_Assemly) by extension 'colcon_pkg'
+[0.532s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Ga_Do_Assemly) by extensions ['colcon_meta']
+[0.532s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Ga_Do_Assemly) by extension 'colcon_meta'
+[0.533s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Ga_Do_Assemly) by extensions ['ros']
+[0.533s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Ga_Do_Assemly) by extension 'ros'
+[0.533s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Ga_Do_Assemly) by extensions ['cmake', 'python']
+[0.533s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Ga_Do_Assemly) by extension 'cmake'
+[0.533s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Ga_Do_Assemly) by extension 'python'
+[0.533s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Ga_Do_Assemly) by extensions ['python_setup_py']
+[0.533s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Ga_Do_Assemly) by extension 'python_setup_py'
+[0.533s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano) by extensions ['ignore', 'ignore_ament_install']
+[0.533s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano) by extension 'ignore'
+[0.533s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano) by extension 'ignore_ament_install'
+[0.534s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano) by extensions ['colcon_pkg']
+[0.534s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano) by extension 'colcon_pkg'
+[0.534s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano) by extensions ['colcon_meta']
+[0.534s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano) by extension 'colcon_meta'
+[0.534s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano) by extensions ['ros']
+[0.534s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano) by extension 'ros'
+[0.534s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano) by extensions ['cmake', 'python']
+[0.534s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano) by extension 'cmake'
+[0.534s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano) by extension 'python'
+[0.534s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano) by extensions ['python_setup_py']
+[0.534s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano) by extension 'python_setup_py'
+[0.535s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano/Case) by extensions ['ignore', 'ignore_ament_install']
+[0.535s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano/Case) by extension 'ignore'
+[0.535s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano/Case) by extension 'ignore_ament_install'
+[0.535s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano/Case) by extensions ['colcon_pkg']
+[0.535s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano/Case) by extension 'colcon_pkg'
+[0.535s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano/Case) by extensions ['colcon_meta']
+[0.535s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano/Case) by extension 'colcon_meta'
+[0.535s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano/Case) by extensions ['ros']
+[0.535s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano/Case) by extension 'ros'
+[0.535s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano/Case) by extensions ['cmake', 'python']
+[0.535s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano/Case) by extension 'cmake'
+[0.535s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano/Case) by extension 'python'
+[0.536s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano/Case) by extensions ['python_setup_py']
+[0.536s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Kit_Jetson_nano/Case) by extension 'python_setup_py'
+[0.536s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Renderings) by extensions ['ignore', 'ignore_ament_install']
+[0.536s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Renderings) by extension 'ignore'
+[0.536s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Renderings) by extension 'ignore_ament_install'
+[0.536s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Renderings) by extensions ['colcon_pkg']
+[0.536s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Renderings) by extension 'colcon_pkg'
+[0.536s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Renderings) by extensions ['colcon_meta']
+[0.536s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Renderings) by extension 'colcon_meta'
+[0.537s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Renderings) by extensions ['ros']
+[0.537s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Renderings) by extension 'ros'
+[0.537s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Renderings) by extensions ['cmake', 'python']
+[0.537s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Renderings) by extension 'cmake'
+[0.537s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Renderings) by extension 'python'
+[0.537s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Renderings) by extensions ['python_setup_py']
+[0.537s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/Renderings) by extension 'python_setup_py'
+[0.537s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/lidar holder) by extensions ['ignore', 'ignore_ament_install']
+[0.537s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/lidar holder) by extension 'ignore'
+[0.537s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/lidar holder) by extension 'ignore_ament_install'
+[0.538s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/lidar holder) by extensions ['colcon_pkg']
+[0.538s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/lidar holder) by extension 'colcon_pkg'
+[0.538s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/lidar holder) by extensions ['colcon_meta']
+[0.538s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/lidar holder) by extension 'colcon_meta'
+[0.538s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/lidar holder) by extensions ['ros']
+[0.538s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/lidar holder) by extension 'ros'
+[0.538s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/lidar holder) by extensions ['cmake', 'python']
+[0.538s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/lidar holder) by extension 'cmake'
+[0.538s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/lidar holder) by extension 'python'
+[0.538s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/lidar holder) by extensions ['python_setup_py']
+[0.538s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Library/lidar holder) by extension 'python_setup_py'
+[0.538s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica) by extensions ['ignore', 'ignore_ament_install']
+[0.539s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica) by extension 'ignore'
+[0.539s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica) by extension 'ignore_ament_install'
+[0.539s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica) by extensions ['colcon_pkg']
+[0.539s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica) by extension 'colcon_pkg'
+[0.539s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica) by extensions ['colcon_meta']
+[0.539s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica) by extension 'colcon_meta'
+[0.539s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica) by extensions ['ros']
+[0.539s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica) by extension 'ros'
+[0.539s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica) by extensions ['cmake', 'python']
+[0.539s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica) by extension 'cmake'
+[0.539s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica) by extension 'python'
+[0.539s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica) by extensions ['python_setup_py']
+[0.540s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica) by extension 'python_setup_py'
+[0.540s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica/Mica2.0) by extensions ['ignore', 'ignore_ament_install']
+[0.540s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica/Mica2.0) by extension 'ignore'
+[0.540s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica/Mica2.0) by extension 'ignore_ament_install'
+[0.540s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica/Mica2.0) by extensions ['colcon_pkg']
+[0.540s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica/Mica2.0) by extension 'colcon_pkg'
+[0.540s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica/Mica2.0) by extensions ['colcon_meta']
+[0.540s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica/Mica2.0) by extension 'colcon_meta'
+[0.540s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica/Mica2.0) by extensions ['ros']
+[0.540s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica/Mica2.0) by extension 'ros'
+[0.541s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica/Mica2.0) by extensions ['cmake', 'python']
+[0.541s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica/Mica2.0) by extension 'cmake'
+[0.541s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica/Mica2.0) by extension 'python'
+[0.541s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica/Mica2.0) by extensions ['python_setup_py']
+[0.541s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/Hardware/Mechanical/Mica/Mica2.0) by extension 'python_setup_py'
+[0.541s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code) by extensions ['ignore', 'ignore_ament_install']
+[0.541s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code) by extension 'ignore'
+[0.541s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code) by extension 'ignore_ament_install'
+[0.541s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code) by extensions ['colcon_pkg']
+[0.541s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code) by extension 'colcon_pkg'
+[0.541s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code) by extensions ['colcon_meta']
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code) by extension 'colcon_meta'
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code) by extensions ['ros']
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code) by extension 'ros'
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code) by extensions ['cmake', 'python']
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code) by extension 'cmake'
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code) by extension 'python'
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code) by extensions ['python_setup_py']
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code) by extension 'python_setup_py'
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test) by extensions ['ignore', 'ignore_ament_install']
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test) by extension 'ignore'
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test) by extension 'ignore_ament_install'
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test) by extensions ['colcon_pkg']
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test) by extension 'colcon_pkg'
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test) by extensions ['colcon_meta']
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test) by extension 'colcon_meta'
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test) by extensions ['ros']
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test) by extension 'ros'
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test) by extensions ['cmake', 'python']
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test) by extension 'cmake'
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test) by extension 'python'
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test) by extensions ['python_setup_py']
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test) by extension 'python_setup_py'
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-Accel) by extensions ['ignore', 'ignore_ament_install']
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-Accel) by extension 'ignore'
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-Accel) by extension 'ignore_ament_install'
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-Accel) by extensions ['colcon_pkg']
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-Accel) by extension 'colcon_pkg'
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-Accel) by extensions ['colcon_meta']
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-Accel) by extension 'colcon_meta'
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-Accel) by extensions ['ros']
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-Accel) by extension 'ros'
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-Accel) by extensions ['cmake', 'python']
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-Accel) by extension 'cmake'
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-Accel) by extension 'python'
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-Accel) by extensions ['python_setup_py']
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-Accel) by extension 'python_setup_py'
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-encoder) by extensions ['ignore', 'ignore_ament_install']
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-encoder) by extension 'ignore'
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-encoder) by extension 'ignore_ament_install'
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-encoder) by extensions ['colcon_pkg']
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-encoder) by extension 'colcon_pkg'
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-encoder) by extensions ['colcon_meta']
+[0.546s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-encoder) by extension 'colcon_meta'
+[0.546s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-encoder) by extensions ['ros']
+[0.546s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-encoder) by extension 'ros'
+[0.546s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-encoder) by extensions ['cmake', 'python']
+[0.546s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-encoder) by extension 'cmake'
+[0.546s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-encoder) by extension 'python'
+[0.546s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-encoder) by extensions ['python_setup_py']
+[0.546s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-encoder) by extension 'python_setup_py'
+[0.546s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-position) by extensions ['ignore', 'ignore_ament_install']
+[0.546s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-position) by extension 'ignore'
+[0.546s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-position) by extension 'ignore_ament_install'
+[0.547s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-position) by extensions ['colcon_pkg']
+[0.547s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-position) by extension 'colcon_pkg'
+[0.547s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-position) by extensions ['colcon_meta']
+[0.547s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-position) by extension 'colcon_meta'
+[0.547s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-position) by extensions ['ros']
+[0.547s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-position) by extension 'ros'
+[0.547s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-position) by extensions ['cmake', 'python']
+[0.547s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-position) by extension 'cmake'
+[0.547s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-position) by extension 'python'
+[0.547s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-position) by extensions ['python_setup_py']
+[0.547s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-position) by extension 'python_setup_py'
+[0.548s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-speed) by extensions ['ignore', 'ignore_ament_install']
+[0.548s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-speed) by extension 'ignore'
+[0.548s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-speed) by extension 'ignore_ament_install'
+[0.548s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-speed) by extensions ['colcon_pkg']
+[0.548s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-speed) by extension 'colcon_pkg'
+[0.548s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-speed) by extensions ['colcon_meta']
+[0.548s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-speed) by extension 'colcon_meta'
+[0.548s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-speed) by extensions ['ros']
+[0.548s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-speed) by extension 'ros'
+[0.548s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-speed) by extensions ['cmake', 'python']
+[0.548s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-speed) by extension 'cmake'
+[0.548s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-speed) by extension 'python'
+[0.549s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-speed) by extensions ['python_setup_py']
+[0.549s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/code/unit-test/Unit-test-speed) by extension 'python_setup_py'
+[0.549s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools) by extensions ['ignore', 'ignore_ament_install']
+[0.549s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools) by extension 'ignore'
+[0.549s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools) by extension 'ignore_ament_install'
+[0.549s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools) by extensions ['colcon_pkg']
+[0.549s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools) by extension 'colcon_pkg'
+[0.549s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools) by extensions ['colcon_meta']
+[0.549s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools) by extension 'colcon_meta'
+[0.549s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools) by extensions ['ros']
+[0.549s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools) by extension 'ros'
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools) by extensions ['cmake', 'python']
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools) by extension 'cmake'
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools) by extension 'python'
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools) by extensions ['python_setup_py']
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools) by extension 'python_setup_py'
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools/MotionCtrl_Systems) by extensions ['ignore', 'ignore_ament_install']
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools/MotionCtrl_Systems) by extension 'ignore'
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools/MotionCtrl_Systems) by extension 'ignore_ament_install'
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools/MotionCtrl_Systems) by extensions ['colcon_pkg']
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools/MotionCtrl_Systems) by extension 'colcon_pkg'
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools/MotionCtrl_Systems) by extensions ['colcon_meta']
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools/MotionCtrl_Systems) by extension 'colcon_meta'
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools/MotionCtrl_Systems) by extensions ['ros']
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools/MotionCtrl_Systems) by extension 'ros'
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools/MotionCtrl_Systems) by extensions ['cmake', 'python']
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools/MotionCtrl_Systems) by extension 'cmake'
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools/MotionCtrl_Systems) by extension 'python'
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools/MotionCtrl_Systems) by extensions ['python_setup_py']
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(MotionCtrl_Systems/tools/MotionCtrl_Systems) by extension 'python_setup_py'
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.552s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.552s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.552s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.552s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.552s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.552s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bridge_node) by extensions ['ignore', 'ignore_ament_install']
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bridge_node) by extension 'ignore'
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bridge_node) by extension 'ignore_ament_install'
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bridge_node) by extensions ['colcon_pkg']
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bridge_node) by extension 'colcon_pkg'
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bridge_node) by extensions ['colcon_meta']
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bridge_node) by extension 'colcon_meta'
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bridge_node) by extensions ['ros']
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bridge_node) by extension 'ros'
+[0.559s] DEBUG:colcon.colcon_core.package_identification:Package 'src/robot_bridge_node' with type 'ros.ament_cmake' and name 'robot_bridge_node'
+[0.559s] Level 1:colcon.colcon_core.package_identification:_identify(src/serial) by extensions ['ignore', 'ignore_ament_install']
+[0.560s] Level 1:colcon.colcon_core.package_identification:_identify(src/serial) by extension 'ignore'
+[0.560s] Level 1:colcon.colcon_core.package_identification:_identify(src/serial) by extension 'ignore_ament_install'
+[0.560s] Level 1:colcon.colcon_core.package_identification:_identify(src/serial) by extensions ['colcon_pkg']
+[0.560s] Level 1:colcon.colcon_core.package_identification:_identify(src/serial) by extension 'colcon_pkg'
+[0.560s] Level 1:colcon.colcon_core.package_identification:_identify(src/serial) by extensions ['colcon_meta']
+[0.560s] Level 1:colcon.colcon_core.package_identification:_identify(src/serial) by extension 'colcon_meta'
+[0.560s] Level 1:colcon.colcon_core.package_identification:_identify(src/serial) by extensions ['ros']
+[0.560s] Level 1:colcon.colcon_core.package_identification:_identify(src/serial) by extension 'ros'
+[0.561s] DEBUG:colcon.colcon_core.package_identification:Package 'src/serial' with type 'ros.ament_cmake' and name 'serial'
+[0.561s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.561s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.561s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.562s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.562s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.598s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'robot_bridge_node' in 'src/robot_bridge_node'
+[0.599s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.599s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.629s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 2 installed packages in /home/jetson/ros2_ws/install
+[0.630s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 0 installed packages in /home/jetson/Desktop/Robot_AGV/install
+[0.632s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 281 installed packages in /opt/ros/humble
+[0.634s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.703s] Level 5:colcon.colcon_core.verb:set package 'serial' build argument 'cmake_args' from command line to 'None'
+[0.703s] Level 5:colcon.colcon_core.verb:set package 'serial' build argument 'cmake_target' from command line to 'None'
+[0.703s] Level 5:colcon.colcon_core.verb:set package 'serial' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.703s] Level 5:colcon.colcon_core.verb:set package 'serial' build argument 'cmake_clean_cache' from command line to 'False'
+[0.703s] Level 5:colcon.colcon_core.verb:set package 'serial' build argument 'cmake_clean_first' from command line to 'False'
+[0.703s] Level 5:colcon.colcon_core.verb:set package 'serial' build argument 'cmake_force_configure' from command line to 'False'
+[0.703s] Level 5:colcon.colcon_core.verb:set package 'serial' build argument 'ament_cmake_args' from command line to 'None'
+[0.703s] Level 5:colcon.colcon_core.verb:set package 'serial' build argument 'catkin_cmake_args' from command line to 'None'
+[0.703s] Level 5:colcon.colcon_core.verb:set package 'serial' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.703s] DEBUG:colcon.colcon_core.verb:Building package 'serial' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jetson/Desktop/Robot_AGV/build/serial', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jetson/Desktop/Robot_AGV/install/serial', 'merge_install': False, 'path': '/home/jetson/Desktop/Robot_AGV/src/serial', 'symlink_install': False, 'test_result_base': None}
+[0.704s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.706s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.706s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/jetson/Desktop/Robot_AGV/src/serial' with build type 'ament_cmake'
+[0.707s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/jetson/Desktop/Robot_AGV/src/serial'
+[0.710s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.711s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.711s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.723s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jetson/Desktop/Robot_AGV/build/serial': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/jetson/Desktop/Robot_AGV/src/serial -DCMAKE_INSTALL_PREFIX=/home/jetson/Desktop/Robot_AGV/install/serial
+[2.010s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jetson/Desktop/Robot_AGV/build/serial' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/jetson/Desktop/Robot_AGV/src/serial -DCMAKE_INSTALL_PREFIX=/home/jetson/Desktop/Robot_AGV/install/serial
+[2.015s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jetson/Desktop/Robot_AGV/build/serial': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/jetson/Desktop/Robot_AGV/build/serial -- -j6 -l6
+[3.255s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jetson/Desktop/Robot_AGV/build/serial' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/jetson/Desktop/Robot_AGV/build/serial -- -j6 -l6
+[3.277s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jetson/Desktop/Robot_AGV/build/serial': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/jetson/Desktop/Robot_AGV/build/serial
+[3.306s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(serial)
+[3.307s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jetson/Desktop/Robot_AGV/build/serial' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/jetson/Desktop/Robot_AGV/build/serial
+[3.312s] Level 1:colcon.colcon_core.environment:checking '/home/jetson/Desktop/Robot_AGV/install/serial' for CMake module files
+[3.313s] Level 1:colcon.colcon_core.environment:checking '/home/jetson/Desktop/Robot_AGV/install/serial' for CMake config files
+[3.314s] Level 1:colcon.colcon_core.shell:create_environment_hook('serial', 'cmake_prefix_path')
+[3.314s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jetson/Desktop/Robot_AGV/install/serial/share/serial/hook/cmake_prefix_path.ps1'
+[3.316s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jetson/Desktop/Robot_AGV/install/serial/share/serial/hook/cmake_prefix_path.dsv'
+[3.317s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jetson/Desktop/Robot_AGV/install/serial/share/serial/hook/cmake_prefix_path.sh'
+[3.320s] Level 1:colcon.colcon_core.environment:checking '/home/jetson/Desktop/Robot_AGV/install/serial/lib'
+[3.320s] Level 1:colcon.colcon_core.environment:checking '/home/jetson/Desktop/Robot_AGV/install/serial/bin'
+[3.321s] Level 1:colcon.colcon_core.environment:checking '/home/jetson/Desktop/Robot_AGV/install/serial/lib/pkgconfig/serial.pc'
+[3.321s] Level 1:colcon.colcon_core.environment:checking '/home/jetson/Desktop/Robot_AGV/install/serial/lib/python3.10/site-packages'
+[3.323s] Level 1:colcon.colcon_core.environment:checking '/home/jetson/Desktop/Robot_AGV/install/serial/bin'
+[3.324s] INFO:colcon.colcon_core.shell:Creating package script '/home/jetson/Desktop/Robot_AGV/install/serial/share/serial/package.ps1'
+[3.327s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jetson/Desktop/Robot_AGV/install/serial/share/serial/package.dsv'
+[3.329s] INFO:colcon.colcon_core.shell:Creating package script '/home/jetson/Desktop/Robot_AGV/install/serial/share/serial/package.sh'
+[3.331s] INFO:colcon.colcon_core.shell:Creating package script '/home/jetson/Desktop/Robot_AGV/install/serial/share/serial/package.bash'
+[3.334s] INFO:colcon.colcon_core.shell:Creating package script '/home/jetson/Desktop/Robot_AGV/install/serial/share/serial/package.zsh'
+[3.336s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jetson/Desktop/Robot_AGV/install/serial/share/colcon-core/packages/serial)
+[3.338s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(serial)
+[3.339s] Level 1:colcon.colcon_core.environment:checking '/home/jetson/Desktop/Robot_AGV/install/serial' for CMake module files
+[3.341s] Level 1:colcon.colcon_core.environment:checking '/home/jetson/Desktop/Robot_AGV/install/serial' for CMake config files
+[3.342s] Level 1:colcon.colcon_core.shell:create_environment_hook('serial', 'cmake_prefix_path')
+[3.342s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jetson/Desktop/Robot_AGV/install/serial/share/serial/hook/cmake_prefix_path.ps1'
+[3.344s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jetson/Desktop/Robot_AGV/install/serial/share/serial/hook/cmake_prefix_path.dsv'
+[3.345s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jetson/Desktop/Robot_AGV/install/serial/share/serial/hook/cmake_prefix_path.sh'
+[3.347s] Level 1:colcon.colcon_core.environment:checking '/home/jetson/Desktop/Robot_AGV/install/serial/lib'
+[3.347s] Level 1:colcon.colcon_core.environment:checking '/home/jetson/Desktop/Robot_AGV/install/serial/bin'
+[3.347s] Level 1:colcon.colcon_core.environment:checking '/home/jetson/Desktop/Robot_AGV/install/serial/lib/pkgconfig/serial.pc'
+[3.348s] Level 1:colcon.colcon_core.environment:checking '/home/jetson/Desktop/Robot_AGV/install/serial/lib/python3.10/site-packages'
+[3.349s] Level 1:colcon.colcon_core.environment:checking '/home/jetson/Desktop/Robot_AGV/install/serial/bin'
+[3.350s] INFO:colcon.colcon_core.shell:Creating package script '/home/jetson/Desktop/Robot_AGV/install/serial/share/serial/package.ps1'
+[3.352s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jetson/Desktop/Robot_AGV/install/serial/share/serial/package.dsv'
+[3.354s] INFO:colcon.colcon_core.shell:Creating package script '/home/jetson/Desktop/Robot_AGV/install/serial/share/serial/package.sh'
+[3.355s] INFO:colcon.colcon_core.shell:Creating package script '/home/jetson/Desktop/Robot_AGV/install/serial/share/serial/package.bash'
+[3.356s] INFO:colcon.colcon_core.shell:Creating package script '/home/jetson/Desktop/Robot_AGV/install/serial/share/serial/package.zsh'
+[3.357s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jetson/Desktop/Robot_AGV/install/serial/share/colcon-core/packages/serial)
+[3.358s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[3.359s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[3.359s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[3.360s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[3.377s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[3.378s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[3.378s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[3.425s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[3.426s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jetson/Desktop/Robot_AGV/install/local_setup.ps1'
+[3.429s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/jetson/Desktop/Robot_AGV/install/_local_setup_util_ps1.py'
+[3.435s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jetson/Desktop/Robot_AGV/install/setup.ps1'
+[3.439s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jetson/Desktop/Robot_AGV/install/local_setup.sh'
+[3.441s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/jetson/Desktop/Robot_AGV/install/_local_setup_util_sh.py'
+[3.442s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jetson/Desktop/Robot_AGV/install/setup.sh'
+[3.445s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jetson/Desktop/Robot_AGV/install/local_setup.bash'
+[3.446s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jetson/Desktop/Robot_AGV/install/setup.bash'
+[3.448s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jetson/Desktop/Robot_AGV/install/local_setup.zsh'
+[3.449s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jetson/Desktop/Robot_AGV/install/setup.zsh'
