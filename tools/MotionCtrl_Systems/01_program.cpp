@@ -20,6 +20,7 @@ sh2_SensorValue_t imuValue;
 
 
 String inputString = "";
+char CMD[10];
 volatile bool stringComplete;
 float vTarget[4];
 float vx, vy, wz;
@@ -99,12 +100,17 @@ void main_loop(void) {
   if (dt < 0.01f) return;  // 100 Hz
   last_time = now;
   if (stringComplete) {
+    if(CMD != "nav2") return;
     vTarget[0] = vx + vy - wz * (d - L);      // FL
     vTarget[1] = vx - vy - wz * (d - L);      // BL
     vTarget[2] = vx + vy + wz * (d - L);      // BR
     vTarget[3] = vx - vy + wz * (d - L);      // FR
     stringComplete = false;
-
+//    Serial.print(CMD); Serial.print(",");
+//    Serial.print(vx); Serial.print(",");
+//    Serial.print(vy); Serial.print(",");
+//    Serial.print(wz); 
+//    Serial.println("");
   }
 
   Motor_Encoder_SpeedPID_Procces(&motor_FL, -vTarget[0]); //m/s
@@ -127,10 +133,10 @@ void main_loop(void) {
   const float ALPHA = 0.95;
   float theta_enc = theta_fused + wz_est * dt;
   theta_fused = ALPHA * theta_enc + (1.0 - ALPHA) * imuYaw;
-  Serial.print("ODM");Serial.print(",");
+  Serial.print("ODOM");Serial.print(",");
   Serial.print(Vx_est, 3); Serial.print(",");
   Serial.print(Vy_est, 3); Serial.print(",");
-  Serial.print(wz_est, 3); Serial.print(" ");
+  Serial.print(wz_est, 3); Serial.print(",");
   Serial.println(theta_fused, 3);
 }
 void serialEvent() {
@@ -140,15 +146,17 @@ void serialEvent() {
     if (inChar == '\n') {
       char buf[64];
       inputString.toCharArray(buf, sizeof(buf));
+      char *token = strtok(buf, ",");
 
-      char *endString = strtok(buf, " ");
-      vx = atof(endString);
+      strncpy(CMD,token,sizeof(CMD));
+      token = strtok(NULL, ",");
+      vx = atof(token);
 
-      endString = strtok(NULL, " ");
-      vy = atof(endString);
+      token = strtok(NULL, ",");
+      vy = atof(token);
 
-      endString = strtok(NULL, " ");
-      wz = atof(endString);
+      token = strtok(NULL, ",");
+      wz = atof(token);
 
       stringComplete = true;
       inputString = "";
