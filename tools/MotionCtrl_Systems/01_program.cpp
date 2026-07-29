@@ -14,8 +14,8 @@ Motor_Encoder motor_BR;
 Adafruit_BNO08x bno08x(-1);
 sh2_SensorValue_t imuValue;
 /*Private Marco*/
-#define kp 110.0f
-#define ki 35.0f
+#define kp 60.0f
+#define ki 30.0f
 #define kd 0.0f
 
 
@@ -51,7 +51,7 @@ void set_up(void) {
   motor_FL.Motor_Encoder_Pin.LEN_pin  = PIN_MOTOR_FL_LEN;
 
   Motor_Encoder_Init(&motor_FL);
-  Motor_Encoder_SetSpeedPID(&motor_FL, kp, ki, kd, 150);
+  Motor_Encoder_SetSpeedPID(&motor_FL, kp, ki, kd, 100);
   Motor_Encoder_ResetSpeedPID(&motor_FL);
   /*Config Front Right*/
   motor_FR.Motor_Encoder_Pin.encoder.pinA = PIN_ENCODER_FR_A;
@@ -64,7 +64,7 @@ void set_up(void) {
   motor_FR.Motor_Encoder_Pin.LEN_pin  = PIN_MOTOR_FR_LEN;
 
   Motor_Encoder_Init(&motor_FR);
-  Motor_Encoder_SetSpeedPID(&motor_FR, kp, ki, kd, 150);
+  Motor_Encoder_SetSpeedPID(&motor_FR, kp, ki, kd, 100);
   Motor_Encoder_ResetSpeedPID(&motor_FR);
   /*Config Back Left*/
   motor_BL.Motor_Encoder_Pin.encoder.pinA = PIN_ENCODER_BL_A;
@@ -77,7 +77,7 @@ void set_up(void) {
   motor_BL.Motor_Encoder_Pin.LEN_pin  = PIN_MOTOR_BL_LEN;
 
   Motor_Encoder_Init(&motor_BL);
-  Motor_Encoder_SetSpeedPID(&motor_BL, kp, ki, kd, 10);
+  Motor_Encoder_SetSpeedPID(&motor_BL, kp, ki, kd, 100);
   Motor_Encoder_ResetSpeedPID(&motor_BL);
   /*Config Back Right*/
   /*Config Back Left*/
@@ -91,7 +91,7 @@ void set_up(void) {
   motor_BR.Motor_Encoder_Pin.LEN_pin  = PIN_MOTOR_BR_LEN;
 
   Motor_Encoder_Init(&motor_BR);
-  Motor_Encoder_SetSpeedPID(&motor_BR, kp, ki, kd, 10);
+  Motor_Encoder_SetSpeedPID(&motor_BR, kp, ki, kd, 100);
   Motor_Encoder_ResetSpeedPID(&motor_BR);
 }
 void main_loop(void) {
@@ -100,17 +100,19 @@ void main_loop(void) {
   if (dt < 0.01f) return;  // 100 Hz
   last_time = now;
   if (stringComplete) {
-    if(CMD != "nav2") return;
-    vTarget[0] = vx + vy - wz * (d - L);      // FL
-    vTarget[1] = vx - vy - wz * (d - L);      // BL
-    vTarget[2] = vx + vy + wz * (d - L);      // BR
-    vTarget[3] = vx - vy + wz * (d - L);      // FR
+    if(strncmp(CMD,"nav2",4) == 0){
+      vTarget[0] = vx + vy - wz * (d - L);      // FL
+      vTarget[1] = vx - vy - wz * (d - L);      // BL
+      vTarget[2] = vx + vy + wz * (d - L);      // BR
+      vTarget[3] = vx - vy + wz * (d - L);      // FR
+      
+//      Serial.print(CMD); Serial.print(",");
+//      Serial.print(vx); Serial.print(",");
+//      Serial.print(vy); Serial.print(",");
+//      Serial.print(wz); 
+//      Serial.println("");
+    }
     stringComplete = false;
-//    Serial.print(CMD); Serial.print(",");
-//    Serial.print(vx); Serial.print(",");
-//    Serial.print(vy); Serial.print(",");
-//    Serial.print(wz); 
-//    Serial.println("");
   }
 
   Motor_Encoder_SpeedPID_Procces(&motor_FL, -vTarget[0]); //m/s
