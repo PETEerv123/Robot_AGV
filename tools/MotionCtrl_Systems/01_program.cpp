@@ -131,7 +131,7 @@ void main_loop(void) {
       imuYaw = atan2( 2.0 * (qw * qz + qx * qy),1.0 - 2.0 * (qy * qy + qz * qz));
     }
   }
-  Serial.print("ODOM");Serial.print(",");
+  Serial.print("odom_raw");Serial.print(",");
   Serial.print(Vx_est, 3); Serial.print(",");
   Serial.print(Vy_est, 3); Serial.print(",");
   Serial.print(wz_est, 3); Serial.print(",");
