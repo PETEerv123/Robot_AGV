@@ -26,7 +26,6 @@ float vTarget[4];
 float vx, vy, wz;
 unsigned long last_time = 0;
 float imuYaw = 0.0f;
-float theta_fused = 0.0f;
 /*Private Variables*/
 void set_up(void) {
   Serial.begin(115200);
@@ -132,14 +131,11 @@ void main_loop(void) {
       imuYaw = atan2( 2.0 * (qw * qz + qx * qy),1.0 - 2.0 * (qy * qy + qz * qz));
     }
   }
-  const float ALPHA = 0.95;
-  float theta_enc = theta_fused + wz_est * dt;
-  theta_fused = ALPHA * theta_enc + (1.0 - ALPHA) * imuYaw;
   Serial.print("ODOM");Serial.print(",");
   Serial.print(Vx_est, 3); Serial.print(",");
   Serial.print(Vy_est, 3); Serial.print(",");
   Serial.print(wz_est, 3); Serial.print(",");
-  Serial.println(theta_fused, 3);
+  Serial.println(imuYaw, 3);
 }
 void serialEvent() {
   while (Serial.available()) {
