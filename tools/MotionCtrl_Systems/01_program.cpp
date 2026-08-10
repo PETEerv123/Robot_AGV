@@ -14,8 +14,8 @@ Motor_Encoder motor_BR;
 Adafruit_BNO08x bno08x(-1);
 sh2_SensorValue_t imuValue;
 /*Private Marco*/
-#define kp 60.0f
-#define ki 30.0f
+#define kp 220.0f
+#define ki 900.0f
 #define kd 0.0f
 
 
@@ -24,6 +24,9 @@ char CMD[10];
 volatile bool stringComplete;
 float vTarget[4];
 float vx, vy, wz;
+double posX,posY;
+double realposX,realposY;
+float theta_fused = 0.0;
 unsigned long last_time = 0;
 float imuYaw = 0.0f;
 /*Private Variables*/
@@ -50,7 +53,7 @@ void set_up(void) {
   motor_FL.Motor_Encoder_Pin.LEN_pin  = PIN_MOTOR_FL_LEN;
 
   Motor_Encoder_Init(&motor_FL);
-  Motor_Encoder_SetSpeedPID(&motor_FL, kp, ki, kd, 100);
+  Motor_Encoder_SetSpeedPID(&motor_FL, kp, ki, kd, 255);
   Motor_Encoder_ResetSpeedPID(&motor_FL);
   /*Config Front Right*/
   motor_FR.Motor_Encoder_Pin.encoder.pinA = PIN_ENCODER_FR_A;
@@ -63,7 +66,7 @@ void set_up(void) {
   motor_FR.Motor_Encoder_Pin.LEN_pin  = PIN_MOTOR_FR_LEN;
 
   Motor_Encoder_Init(&motor_FR);
-  Motor_Encoder_SetSpeedPID(&motor_FR, kp, ki, kd, 100);
+  Motor_Encoder_SetSpeedPID(&motor_FR, kp, ki, kd, 255);
   Motor_Encoder_ResetSpeedPID(&motor_FR);
   /*Config Back Left*/
   motor_BL.Motor_Encoder_Pin.encoder.pinA = PIN_ENCODER_BL_A;
@@ -76,7 +79,7 @@ void set_up(void) {
   motor_BL.Motor_Encoder_Pin.LEN_pin  = PIN_MOTOR_BL_LEN;
 
   Motor_Encoder_Init(&motor_BL);
-  Motor_Encoder_SetSpeedPID(&motor_BL, kp, ki, kd, 100);
+  Motor_Encoder_SetSpeedPID(&motor_BL, kp, ki, kd, 255);
   Motor_Encoder_ResetSpeedPID(&motor_BL);
   /*Config Back Right*/
   /*Config Back Left*/
@@ -90,27 +93,31 @@ void set_up(void) {
   motor_BR.Motor_Encoder_Pin.LEN_pin  = PIN_MOTOR_BR_LEN;
 
   Motor_Encoder_Init(&motor_BR);
-  Motor_Encoder_SetSpeedPID(&motor_BR, kp, ki, kd, 100);
+  Motor_Encoder_SetSpeedPID(&motor_BR, kp, ki, kd, 255);
   Motor_Encoder_ResetSpeedPID(&motor_BR);
 }
 void main_loop(void) {
-  unsigned long now = micros();
-  float dt = (now - last_time) / 1000000.0f; 
+  unsigned long now = millis();
+  float dt = (now - last_time) / 1000.0f; 
   if (dt < 0.01f) return;  // 100 Hz
   last_time = now;
   if (stringComplete) {
-    if(strncmp(CMD,"nav2",4) == 0){
+     if(strncmp(CMD,"nav2",4) == 0){
       vTarget[0] = vx + vy - wz * (d - L);      // FL
       vTarget[1] = vx - vy - wz * (d - L);      // BL
       vTarget[2] = vx + vy + wz * (d - L);      // BR
       vTarget[3] = vx - vy + wz * (d - L);      // FR
-      
+     }else if(strncmp(CMD,"rst",3) == 0){
+      posX = realposX;
+      posY = realposY;
+     }
 //      Serial.print(CMD); Serial.print(",");
 //      Serial.print(vx); Serial.print(",");
 //      Serial.print(vy); Serial.print(",");
 //      Serial.print(wz); 
+//      Serial.print(posX);Serial.print(",");
+//      Serial.print(posY);Serial.print(",");
 //      Serial.println("");
-    }
     stringComplete = false;
   }
 
@@ -118,6 +125,8 @@ void main_loop(void) {
   Motor_Encoder_SpeedPID_Procces(&motor_BL, -vTarget[1]);
   Motor_Encoder_SpeedPID_Procces(&motor_BR, vTarget[2]);
   Motor_Encoder_SpeedPID_Procces(&motor_FR, vTarget[3]);
+  motor_FL.speedInfo.rps = -motor_FL.speedInfo.rps;
+  motor_BL.speedInfo.rps = -motor_BL.speedInfo.rps;
   float Vx_est =  (WHEEL_CIRC * (motor_FL.speedInfo.rps + motor_BL.speedInfo.rps + motor_BR.speedInfo.rps + motor_FR.speedInfo.rps)) / 4.0f;
   float Vy_est =  (WHEEL_CIRC * (motor_FL.speedInfo.rps - motor_BL.speedInfo.rps + motor_BR.speedInfo.rps - motor_FR.speedInfo.rps)) / 4.0f;
   float wz_est =  (WHEEL_CIRC * (-motor_FL.speedInfo.rps - motor_BL.speedInfo.rps + motor_BR.speedInfo.rps + motor_FR.speedInfo.rps )) / (4.0f * (d - L));
@@ -131,11 +140,20 @@ void main_loop(void) {
       imuYaw = atan2( 2.0 * (qw * qz + qx * qy),1.0 - 2.0 * (qy * qy + qz * qz));
     }
   }
+  const float ALPHA = 0.95;
+  float theta_enc = theta_fused + wz_est * dt;
+  theta_fused = ALPHA * theta_enc + (1.0 - ALPHA) * imuYaw;
+
+  posX += (Vx_est * cos(imuYaw) - Vy_est * sin(imuYaw)) * dt;
+  posY += (Vx_est * sin(imuYaw) + Vy_est * cos(imuYaw)) * dt;
+
   Serial.print("odom_raw");Serial.print(",");
   Serial.print(Vx_est, 3); Serial.print(",");
   Serial.print(Vy_est, 3); Serial.print(",");
   Serial.print(wz_est, 3); Serial.print(",");
-  Serial.println(imuYaw, 3);
+  Serial.print(imuYaw, 3); Serial.print(",");
+  Serial.print(posX,3);    Serial.print(",");
+  Serial.println(posY,3);
 }
 void serialEvent() {
   while (Serial.available()) {
@@ -147,6 +165,7 @@ void serialEvent() {
       char *token = strtok(buf, ",");
 
       strncpy(CMD,token,sizeof(CMD));
+     if(strncmp(CMD,"nav2",4) == 0){
       token = strtok(NULL, ",");
       vx = atof(token);
 
@@ -155,8 +174,14 @@ void serialEvent() {
 
       token = strtok(NULL, ",");
       wz = atof(token);
-
       stringComplete = true;
+     }else if(strncmp(CMD,"rst",3) == 0){
+      token = strtok(NULL, ",");
+      realposX = atof(token);
+      token = strtok(NULL, ",");
+      realposY = atof(token);
+      stringComplete = true;
+     }
       inputString = "";
     }
   }
