@@ -2,4 +2,17 @@ build/
 install/
 log/
 model/
+src/serial/doc
+src/serial/tests
+src/serial/visual_studio
+src/serial/CHANGELOG.rst
+src/serial/changes.txt
+src/serial/serial.sublime-project
+src/serial/Makefile
 
+src/rplidar_ros/debian
+src/rplidar_ros/rviz
+src/rplidar_ros/scripts
+src/rplidar_ros/rplidar_A2.png
+src/rplidar_ros/LICENSE
+src/rplidar_ros/CHANGELOG.rst
