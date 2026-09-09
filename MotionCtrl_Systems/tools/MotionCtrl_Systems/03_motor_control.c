@@ -67,7 +67,7 @@ MOTOR_PUBLIC(void) Motor_Encoder_SpeedPID_Procces(Motor_Encoder *pHandle, float 
     Motor_Encoder_Run(pHandle, (int16_t)output);
 }
 MOTOR_PUBLIC(void) Motor_Encoder_SetSpeedPID(Motor_Encoder *pHandle, float Kp, float Ki, float Kd, float outMax){
-    PIDControl_SetParam(&pHandle->speed_PID, 3.0f, Kp, Ki, Kd, outMax);
+    PIDControl_SetParam(&pHandle->speed_PID, 1.0f, Kp, Ki, Kd, outMax);
 }
 MOTOR_PUBLIC(float) Motor_Encoder_CalcSpeedPID(Motor_Encoder *pHandle, float setpoint, float feedback){
     return PIDControl_Calc(&pHandle->speed_PID, setpoint, feedback);

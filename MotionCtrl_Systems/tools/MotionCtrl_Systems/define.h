@@ -11,8 +11,8 @@ extern "C"
 #define PIN_ENCODER_FL_B       24
 
 
-#define PIN_MOTOR_FL_LPWM      6
-#define PIN_MOTOR_FL_RPWM      7
+#define PIN_MOTOR_FL_LPWM      7
+#define PIN_MOTOR_FL_RPWM      6
 #define PIN_MOTOR_FL_LEN       13
 #define PIN_MOTOR_FL_REN       12
 /*End Front Left*/

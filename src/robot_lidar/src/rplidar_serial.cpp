@@ -87,37 +87,48 @@ private:
       return;
     }
 
-    // Sắp xếp góc quét từ 0 đến 360 độ
     lidar_->ascendScanData(nodes, count);
 
     auto msg = std::make_unique<sensor_msgs::msg::LaserScan>();
 
-    msg->header.stamp = now();
+    msg->header.stamp = this->get_clock()->now();
     msg->header.frame_id = frame_id_;
+    constexpr int NUM_SCAN = 720;
 
-    msg->angle_min = 0.0;
+    msg->angle_min = 0;
     msg->angle_max = 2.0 * M_PI;
-    msg->angle_increment = (msg->angle_max - msg->angle_min) / count;
+    msg->angle_increment = (msg->angle_max - msg->angle_min) / (NUM_SCAN - 1);
 
-    msg->range_min = 0.15; // 15 cm
-    msg->range_max = 12.0; // 12 m
+    msg->range_min = 0.20;
+    msg->range_max = 12.0;
 
-    msg->ranges.resize(count);
-    msg->intensities.resize(count);
+    msg->ranges.assign(NUM_SCAN, std::numeric_limits<float>::infinity());
+    msg->intensities.assign(NUM_SCAN, 0.0f);
 
     for (size_t i = 0; i < count; i++) {
-      // Đổi từ định dạng Q2 (dist_mm_q2 / 4.0) sang đơn vị Mét
-      float distance_m = (nodes[i].dist_mm_q2 / 4.0f) / 1000.0f;
+      float distance = (nodes[i].dist_mm_q2 / 4.0f) / 1000.0f;
 
-      // XỬ LÝ LỖI ĐIỂM 0 / NGOÀI KHOẢNG ĐỌC CHO SLAM & NAV2
-      if (distance_m < msg->range_min || distance_m > msg->range_max) {
-        msg->ranges[i] = std::numeric_limits<float>::infinity();
-      } else {
-        msg->ranges[i] = distance_m;
+      if (distance < msg->range_min || distance > msg->range_max)
+        continue;
+
+      float angle_deg = 360.0f - (nodes[i].angle_z_q14 * 90.0f / 16384.0f);
+
+      float angle = angle_deg * M_PI / 180.0f;
+      while (angle >= 2.0f * M_PI)
+        angle -= 2.0f * M_PI;
+
+      // while (angle <= -2.0f * M_PI)
+      //   angle += 2.0f * M_PI;
+
+      // while (angle < -M_PI)
+      //   angle += 2.0f * M_PI;
+
+      int index = static_cast<int>(angle / msg->angle_increment);
+
+      if (index >= 0 && index < NUM_SCAN) {
+        msg->ranges[index] = distance;
+        msg->intensities[index] = static_cast<float>(nodes[i].quality >> 2);
       }
-
-      // Cường độ phản xạ tín hiệu (Quality)
-      msg->intensities[i] = static_cast<float>(nodes[i].quality >> 2);
     }
 
     scan_pub_->publish(std::move(msg));

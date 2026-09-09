@@ -1,7 +1,7 @@
 import os
 
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription
+from launch.actions import IncludeLaunchDescription, TimerAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 from launch_ros.actions import Node
@@ -43,71 +43,80 @@ def generate_launch_description():
         "nav2.launch.py",
     )
 
-    return LaunchDescription([
-
-        Node(
-            package="robot_bridge_node",
-            executable="robot_bridge_node",
-            name="robot_bridge_node",
-            output="screen",
-        ),
-
-        Node(
-            package="robot_lidar",
-            executable="robot_lidar",
-            name="robot_lidar",
-            output="screen",
-        ),
-
-        Node(
-            package="robot_localization",
-            executable="ekf_node",
-            name="ekf_filter_node",
-            output="screen",
-            parameters=[ekf_yaml],
-        ),
-
-        Node(
-            package="joint_state_publisher",
-            executable="joint_state_publisher",
-            name="joint_state_publisher",
-            output="screen",
-        ),
-
-        Node(
-            package="robot_state_publisher",
-            executable="robot_state_publisher",
-            name="robot_state_publisher",
-            output="screen",
-            parameters=[
-                {
-                    "robot_description": robot_description,
-                }
-            ],
-        ),
-
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(nav2_launch),
-            launch_arguments={
-                "slam": "True",
-                "use_sim_time": "False",
-                "params_file": nav2_yaml,
-                "autostart": "True",
-            }.items(),
-        ),
-
-        Node(
-            package="slam_toolbox",
-            executable="async_slam_toolbox_node",
-            name="slam_toolbox",
-            output="screen",
-            parameters=[slam_param],
-        ),
-        #
-        # Node(
-        #     package="rviz2",
-        #     executable="rviz2",
-        #     name="rviz2",
-        #     output="screen",
-        # ),
-    ])
+    twist_mux_yaml = os.path.join(
+        get_package_share_directory("robot_bringup"),
+        "config",
+        "twist_mux.yaml",
+    )
+    return LaunchDescription(
+        [
+            Node(
+                package="robot_bridge_node",
+                executable="robot_bridge_node",
+                name="robot_bridge_node",
+                output="screen",
+            ),
+            Node(
+                package="robot_lidar",
+                executable="robot_lidar",
+                name="robot_lidar",
+                output="screen",
+            ),
+            Node(
+                package="slam_toolbox",
+                executable="async_slam_toolbox_node",
+                name="slam_toolbox",
+                output="screen",
+                parameters=[slam_param, {"use_sim_time": False}],
+            ),
+            Node(
+                package="robot_localization",
+                executable="ekf_node",
+                name="ekf_filter_node",
+                output="screen",
+                parameters=[ekf_yaml],
+            ),
+            Node(
+                package="joint_state_publisher",
+                executable="joint_state_publisher",
+                name="joint_state_publisher",
+                output="screen",
+            ),
+            Node(
+                package="robot_state_publisher",
+                executable="robot_state_publisher",
+                name="robot_state_publisher",
+                output="screen",
+                parameters=[
+                    {
+                        "robot_description": robot_description,
+                    }
+                ],
+            ),
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(nav2_launch),
+                launch_arguments={
+                    "slam": "False",
+                    "use_sim_time": "False",
+                    "params_file": nav2_yaml,
+                    "autostart": "True",
+                }.items(),
+            ),
+            Node(
+                package="twist_mux",
+                executable="twist_mux",
+                name="twist_mux",
+                output="screen",
+                parameters=[twist_mux_yaml],
+                remappings=[
+                    ("cmd_vel_out", "/cmd_vel"),
+                ],
+            ),
+            # Node(
+            #     package="rviz2",
+            #     executable="rviz2",
+            #     name="rviz2",
+            #     output="screen",
+            # ),
+        ]
+    )

@@ -4,7 +4,7 @@
   <!-- ================= Materials ================= -->
 
   <material name="red">
-    <color rgba="1 0 0 0.3"/>
+    <color rgba="1 0 0 0.7"/>
   </material>
 
   <material name="blue">
@@ -31,9 +31,9 @@
     <visual>
       <origin xyz="0 0 0.04" rpy="0 0 0"/>
       <geometry>
-        <box size="0.3 0.32 0.08"/>
+        <box size="0.52 0.55 0.08"/>
       </geometry>
-      <material name="gray"/>
+      <material name="red"/>
     </visual>
   </link>
 
@@ -51,7 +51,7 @@
 
   <link name="Front_left_wheel">
     <visual>
-      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <cylinder radius="0.05" length="0.03"/>
       </geometry>
@@ -61,7 +61,7 @@
 
   <link name="Front_right_wheel">
     <visual>
-      <origin xyz="0 0 0" rpy="-1.5708 0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <cylinder radius="0.05" length="0.03"/>
       </geometry>
@@ -71,7 +71,7 @@
 
   <link name="Back_left_wheel">
     <visual>
-      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <cylinder radius="0.05" length="0.03"/>
       </geometry>
@@ -81,7 +81,7 @@
 
   <link name="Back_right_wheel">
     <visual>
-      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <cylinder radius="0.05" length="0.03"/>
       </geometry>
@@ -96,19 +96,19 @@
     <child link="base_link"/>
     <origin xyz="0 0 0.04" rpy="0 0 0"/>
   </joint>
-
   <!-- LiDAR -->
   <joint name="base_laser_joint" type="fixed">
     <parent link="base_link"/>
     <child link="laser_frame"/>
-    <origin xyz="0 0 0.105" rpy="0 0 0"/>
+    <origin xyz="0 -0.02 0.105" rpy="0 0 3.1415"/>
+
   </joint>
 
   <!-- Front Left -->
   <joint name="base_Fleft_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="Front_left_wheel"/>
-    <origin xyz="-0.15 -0.16 0.025" rpy="0 0 0"/>
+    <origin xyz="0.275 0.260 0.025" rpy="1.5708 0 0"/>
     <axis xyz="0 1 0"/>
   </joint>
 
@@ -116,15 +116,15 @@
   <joint name="base_Fright_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="Front_right_wheel"/>
-    <origin xyz="-0.15 0.16 0.025" rpy="0 0 0"/>
-    <axis xyz="0 1 0"/>
+    <origin xyz="0.275 -0.260 0.025" rpy="1.5708 0 0"/>
+    <axis xyz="0 -1 0"/>
   </joint>
 
   <!-- Back Left -->
   <joint name="base_Bleft_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="Back_left_wheel"/>
-    <origin xyz="0.15 -0.16 0.025" rpy="0 0 0"/>
+    <origin xyz="-0.275 -0.260 0.025" rpy="1.5708 0 0"/>
     <axis xyz="0 1 0"/>
   </joint>
 
@@ -132,7 +132,7 @@
   <joint name="base_Bright_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="Back_right_wheel"/>
-    <origin xyz="0.15 0.16 0.025" rpy="0 0 0"/>
+    <origin xyz="-0.275 0.260 0.025" rpy="1.5708 0 0"/>
     <axis xyz="0 1 0"/>
   </joint>
 
